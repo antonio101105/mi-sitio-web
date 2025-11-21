@@ -1,0 +1,14 @@
+.card {
+    width: 300px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--color-fondo);
+    /* Debe ser el mismo que el body */
+
+    /* La Magia del Neumorfismo */
+    box-shadow:
+        /* 1. Sombra Oscura (Inferior derecha) */
+        10px 10px 20px var(--color-sombra-oscura),
+        /* 2. Sombra Clara/Blanca (Superior izquierda) */
+        -10px -10px 20px var(--color-sombra-clara);
+}

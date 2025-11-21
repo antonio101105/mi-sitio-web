@@ -1,0 +1,41 @@
+:root {
+    /* Variables de Color */
+    --color-fondo: #e0e0e0;
+    --color-sombra-clara: #ffffff;
+    --color-sombra-oscura: #a7a7a7;
+}
+
+body {
+    background-color: var(--color-fondo);
+    display: flex;
+    /* Para centrar la tarjeta */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+}
+
+.button {
+    background-color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+
+    /* Neumorfismo Saliente */
+    box-shadow:
+        5px 5px 10px var(--color-sombra-oscura),
+        -5px -5px 10px var(--color-sombra-clara);
+
+    transition: all 0.2s ease;
+    /* Transición suave para el efecto hover/active */
+}
+
+.button:active {
+    /* Neumorfismo Hundido (usando INSET) */
+    box-shadow:
+        inset 5px 5px 10px var(--color-sombra-oscura),
+        inset -5px -5px 10px var(--color-sombra-clara);
+}

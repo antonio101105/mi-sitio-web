@@ -634,3 +634,10 @@ footer {
         content: '...';
     }
 }
+/* Efecto mejorado para tarjetas clickeables */
+.topic-card-clickable:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px -5px rgba(56, 189, 248, 0.3);
+}

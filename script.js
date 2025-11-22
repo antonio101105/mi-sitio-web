@@ -1,9 +1,10 @@
+// Asignaturas por curso (1º y 2º de ASIR)
 const subjects = {
     1: ['FH', 'DIG', 'GBD', 'LMSGI', 'SOS', 'IPE1', 'ISO', 'PAR'],
     2: ['ASO', 'ASGBD', 'SAD', 'PROY', 'OPT', 'IPE2', 'IAW', 'HLC', 'ING', 'SRI']
 };
 
-// Subject icons mapping
+// Mapeo de iconos para cada asignatura
 const subjectIcons = {
     'FH': 'fa-solid fa-microchip',
     'DIG': 'fa-solid fa-diagram-project',
@@ -624,6 +625,336 @@ const topicsData = {
                 <h4>Integración</h4>
                 <p>En portátiles modernos suele estar oculto en el marco de la pantalla, eliminando la necesidad de conectar uno externo.</p>
             `
+        },
+        {
+            title: 'Tema 6: Periféricos de Salida',
+            desc: 'Monitor, impresora, plóter, altavoces y teoría del color.',
+            content: `
+                <h3>1. El Monitor</h3>
+                <p>Es el periférico más importante, encargado de mostrar la información procesada por el equipo.</p>
+                
+                <h4>Conexiones</h4>
+                <ul>
+                    <li><strong>Analógicas:</strong> VGA, RCA, S-Vídeo.</li>
+                    <li><strong>Digitales:</strong> DVI, HDMI.</li>
+                </ul>
+
+                <h4>Características Técnicas</h4>
+                <ul>
+                    <li><strong>Tamaño:</strong> Se mide en pulgadas (diagonal).</li>
+                    <li><strong>Formato:</strong> Relación ancho/alto. Estándares: 4:3 (clásico) y 16:9 (panorámico).</li>
+                    <li><strong>Resolución:</strong> Tamaño del píxel en pantalla (ej. 1280x1024).</li>
+                    <li><strong>Dot pitch:</strong> Distancia entre puntos del mismo color. A menor distancia, mayor nitidez.</li>
+                    <li><strong>Ángulo de visión:</strong> Fundamental en pantallas planas; determina desde qué ángulo se ve bien la imagen (aprox. 170º en TFT).</li>
+                </ul>
+
+                <h4>Tipos de Monitor</h4>
+                <ul>
+                    <li><strong>Displays:</strong> Pequeños visualizadores (7 segmentos, matriz de puntos) usados en calculadoras o cajas de PC.</li>
+                    <li><strong>CRT (Tubo de Rayos Catódicos):</strong> Tecnología antigua. Usa un cañón de electrones que impacta sobre una pantalla de fósforo. Son voluminosos y consumen mucha energía.</li>
+                    <li><strong>LCD (Cristal Líquido):</strong> Dos capas polarizadas con cristal líquido en medio. Consumen poco y no emiten radiación, pero pueden dejar estela en imágenes rápidas.</li>
+                    <li><strong>TFT (Transistor de Película Delgada):</strong> Evolución del LCD. Cada píxel tiene su propio transistor, mejorando contraste, color y velocidad.</li>
+                </ul>
+
+                <h3>2. La Impresora</h3>
+                <p>Periférico para obtener información en formato impreso.</p>
+                
+                <h4>Características</h4>
+                <ul>
+                    <li><strong>Velocidad:</strong> Se mide en ppm (páginas por minuto).</li>
+                    <li><strong>Resolución:</strong> Se mide en ppp (píxeles por pulgada).</li>
+                    <li><strong>Buffer:</strong> Memoria RAM interna para gestionar la cola de impresión.</li>
+                </ul>
+
+                <h4>Tipos de Impresora</h4>
+                <ul>
+                    <li><strong>Inyección de tinta (Inkjet):</strong> Inyectan tinta líquida mediante cabezales. Baratas, pero el consumible (cartucho) es caro.</li>
+                    <li><strong>Láser:</strong> Usan tóner (polvo con carga electrostática). Un láser dibuja la imagen en un rodillo, el tóner se pega al rodillo y luego se transfiere al papel y se fija con calor (fusor). Son rápidas y el coste por copia es bajo.</li>
+                    <li><strong>Matricial:</strong> Agujas golpean una cinta entintada contra el papel (papel continuo). Ruidosas y de baja calidad, usadas para facturas/albaranes.</li>
+                    <li><strong>Térmica:</strong> Usan calor sobre papel sensible. Típicas en tickets y cajeros. El papel se oscurece con el calor o el tiempo.</li>
+                    <li><strong>Sublimación:</strong> Alta calidad fotográfica mediante calor y cintas de color.</li>
+                    <li><strong>Tinta Sólida:</strong> Usan bloques de cera que se derriten.</li>
+                </ul>
+
+                <h3>3. El Plóter</h3>
+                <p>Impresora de gran formato para diseño técnico, arquitectura e ingeniería.</p>
+                <ul>
+                    <li><strong>Funcionamiento:</strong> Usa plumillas mecánicas para dibujar con gran precisión o inyección de tinta.</li>
+                    <li><strong>Plóter de corte:</strong> Sustituye la pluma por una cuchilla. Se usa para cortar vinilo en rotulación.</li>
+                    <li><strong>Soporte:</strong> Suelen usar rollos de papel de gran ancho (90-150 cm) y longitud.</li>
+                </ul>
+
+                <h3>4. Los Altavoces</h3>
+                <p>Reproducen el sonido. No confundir con el altavoz interno de la placa (beeps de diagnóstico).</p>
+                
+                <h4>Sistema 5.1 (Home Cinema)</h4>
+                <ul>
+                    <li><strong>1 Subwoofer (Central):</strong> Sonidos graves.</li>
+                    <li><strong>2 Altavoces Traseros:</strong> Sonido ambiente.</li>
+                    <li><strong>2 Altavoces Delanteros:</strong> Resto de sonidos.</li>
+                </ul>
+                <p><strong>Conexión:</strong> Generalmente Jack de 3.5 mm (color verde) o RCA.</p>
+
+                <h3>Mundo Laboral: Teoría del Color</h3>
+                <p>Es crucial distinguir entre los modos de color para pantalla e impresión:</p>
+                <ul>
+                    <li><strong>RGB (Rojo, Verde, Azul):</strong> Colores aditivos (luz). Usados en monitores. La suma de todos da blanco.</li>
+                    <li><strong>CMYK (Cian, Magenta, Amarillo, Negro):</strong> Colores sustractivos (pigmento). Usados en impresoras. La suma da negro (K se añade para profundidad y ahorro de tinta).</li>
+                </ul>
+            `
+        },
+        {
+            title: 'Tema 7: Dispositivos de Almacenamiento',
+            desc: 'Disco duro (HDD), SSD, unidades ópticas (CD/DVD/BluRay), memorias flash y disquetes.',
+            content: `
+                <h3>1. El Disco Duro (HDD - Hard Disk Drive)</h3>
+                <p>Es el dispositivo de almacenamiento masivo por excelencia. Su función es guardar grandes cantidades de datos de forma permanente, incluyendo el sistema operativo.</p>
+                
+                <h4>Funcionamiento y Estructura Física</h4>
+                <p>El disco duro es un dispositivo magnético.</p>
+                <ul>
+                    <li><strong>Componentes internos:</strong> Está compuesto por varios platos (generalmente de aluminio) recubiertos de material magnetizable, apilados sobre un eje que gira gracias a un motor.</li>
+                    <li><strong>Lectura/Escritura:</strong> Para leer y escribir, utiliza cabezales magnéticos que se sitúan a una distancia microscópica de la superficie del plato sin tocarla. Estos cabezales se mueven radialmente mediante un brazo mecánico.</li>
+                    <li><strong>Velocidad:</strong> Los platos giran a velocidades muy altas, típicamente 7.200 rpm (aprox. 130 km/h) en sobremesa, aunque existen versiones de 5.400, 10.000 y 15.000 rpm. Esta velocidad crea un colchón de aire que permite al cabezal "volar" sobre el disco. Si la velocidad baja, el cabezal se retira a una "zona de aterrizaje" para evitar rayar el disco.</li>
+                    <li><strong>Organización de datos:</strong> La información se estructura lógica y físicamente en Platos, Caras, Cilindros, Pistas y Sectores. La capacidad total se calcula multiplicando estos factores.</li>
+                </ul>
+
+                <h4>Formatos y Conexiones</h4>
+                <p><strong>Tamaños (Factor de forma):</strong></p>
+                <ul>
+                    <li><strong>3,5 pulgadas:</strong> Estándar para ordenadores de sobremesa. Requieren alimentación eléctrica directa de la fuente.</li>
+                    <li><strong>2,5 pulgadas:</strong> Estándar para portátiles. Son más pequeños y suelen alimentarse solo con la conexión de datos (en casos externos) o interna.</li>
+                </ul>
+
+                <p><strong>Interfaces de Conexión:</strong></p>
+                <ul>
+                    <li><strong>IDE (PATA):</strong> Conector antiguo de 40 pines (sobremesa) o 44 pines (portátil). Requiere configuración de "Maestro" o "Esclavo" mediante jumpers.</li>
+                    <li><strong>SATA:</strong> El estándar actual, más rápido y con cables más finos. No requiere configuración maestro/esclavo manual.</li>
+                    <li><strong>SCSI:</strong> Utilizado en servidores y entornos profesionales de alto rendimiento.</li>
+                    <li><strong>Externos:</strong> Se montan en carcasas que convierten la conexión interna (SATA/IDE) a USB o Firewire.</li>
+                </ul>
+
+                <h3>2. Dispositivos de Estado Sólido (SSD)</h3>
+                <p>El SSD (Solid State Drive) es la evolución moderna del almacenamiento. A diferencia del disco duro, no tiene partes móviles (no hay discos girando).</p>
+                
+                <ul>
+                    <li><strong>Tecnología:</strong> Utiliza memoria no volátil de tipo Flash NAND. Esto le permite retener datos sin corriente eléctrica.</li>
+                </ul>
+
+                <h4>Ventajas sobre el HDD</h4>
+                <ul>
+                    <li><strong>Velocidad:</strong> Arranque, lectura y escritura mucho más rápidos.</li>
+                    <li><strong>Resistencia:</strong> Al no tener piezas mecánicas, soporta golpes y vibraciones que romperían un disco duro convencional.</li>
+                    <li><strong>Silencio y Consumo:</strong> Es totalmente silencioso y consume menos energía, generando menos calor.</li>
+                </ul>
+
+                <p><strong>Inconveniente:</strong> El costo por bit (precio por GB) sigue siendo más alto que en los discos duros tradicionales.</p>
+
+                <h3>3. Unidades Ópticas (CD, DVD, BluRay)</h3>
+                <p>Estos dispositivos utilizan tecnología láser para leer y escribir datos en discos de policarbonato.</p>
+                
+                <h4>Funcionamiento</h4>
+                <ul>
+                    <li><strong>Lectura:</strong> Un rayo láser incide sobre la superficie del disco. La información está grabada en una espiral de marcas llamadas hoyos (pits) y valles (lands). Un fotodetector interpreta el reflejo de la luz como ceros y unos.</li>
+                    <li><strong>Escritura:</strong> El láser "quema" el sustrato del disco cambiando su reflectividad para crear las marcas.</li>
+                    <li><strong>Velocidad:</strong> Se mide en múltiplos de "x". La velocidad base (x1) o "flexo" corresponde a 150 KB/s (velocidad del primer CD de audio).</li>
+                </ul>
+
+                <h4>Tipos de Soporte</h4>
+                <ul>
+                    <li><strong>CD (Compact Disc):</strong> Capacidad de 700-900 MB.</li>
+                    <li><strong>DVD (Digital Versatile Disc):</strong> Capacidad estándar de 4,7 GB. Puede tener doble capa (DL) llegando a 8,5 GB o doble cara.</li>
+                    <li><strong>BluRay (BD):</strong> Utiliza un láser azul (de ahí su nombre) que permite mayor densidad de datos. Capacidad de 25 GB por capa (hasta 50 GB en doble capa).</li>
+                </ul>
+
+                <h3>4. Unidades Flash (Memorias USB y Tarjetas)</h3>
+                <p>Son dispositivos de almacenamiento portátiles basados en memorias flash (electrónicas), similares a la tecnología de los SSD pero para transporte de datos.</p>
+                
+                <ul>
+                    <li><strong>Pendrive (Memoria USB):</strong> Integra memoria flash y un conector USB en una carcasa pequeña. Es resistente y muy compatible. Capacidades desde megabytes hasta varios terabytes.</li>
+                    <li><strong>Tarjetas de Memoria:</strong> Usadas en cámaras, móviles y consolas. Existen múltiples formatos, a veces incompatibles entre sí, aunque se venden lectores multitarjeta.</li>
+                </ul>
+
+                <h4>Tipos comunes de tarjetas</h4>
+                <p>SD (Secure Digital) y sus variantes mini/micro, CF (Compact Flash), MS (Memory Stick de Sony), XD y MMC.</p>
+
+                <h3>5. La Disquetera (Tecnología Obsoleta)</h3>
+                <p>Aunque casi desaparecida, es importante conocerla históricamente.</p>
+                
+                <ul>
+                    <li><strong>Soporte:</strong> Usaba disquetes de 3,5 pulgadas con una capacidad máxima de 1,44 MB.</li>
+                    <li><strong>Tecnología:</strong> Magnética. Una lámina de plástico flexible (mylar) recubierta de material magnetizable giraba dentro de una carcasa de plástico rígido.</li>
+                    <li><strong>Variantes de alta capacidad:</strong> Intentaron suceder al disquete unidades como la ZIP (hasta 750 MB) y la JAZ (hasta 2 GB), pero fueron desplazadas por los CD grabables y las memorias USB.</li>
+                </ul>
+            `
+        },
+        {
+            title: 'Tema 8: Montaje de Equipos Informáticos',
+            desc: 'Instalación de componentes, cableado, refrigeración, periféricos y normativa de calidad.',
+            content: `
+                <h3>1. Componentes Principales (Placa, CPU, RAM)</h3>
+                
+                <h4>Placa Base (Motherboard)</h4>
+                <ul>
+                    <li><strong>Instalación:</strong> Se fija a la caja usando tornillos dorados de base. Se debe sustituir la placa troquelada trasera (I/O shield) por la que viene con la placa. Se atornilla siguiendo una técnica diagonal (esquinas opuestas) sin apretar en exceso.</li>
+                    <li><strong>Cableado:</strong> Es crucial conectar correctamente los jumpers del panel frontal (encendido, reset, luces LED) siguiendo el manual o la serigrafía de la placa.</li>
+                </ul>
+
+                <h4>Microprocesador (CPU)</h4>
+                <ul>
+                    <li><strong>Montaje:</strong> Se levanta la palanca del socket. Se alinea la marca (triángulo) del procesador con la del socket. Se deja caer suavemente sin presionar ("Zero Insertion Force") y se baja la palanca para fijarlo.</li>
+                </ul>
+
+                <h4>Sistema de Refrigeración</h4>
+                <ul>
+                    <li><strong>CPU:</strong> Se aplica una pequeña cantidad de masilla térmica (tamaño de un guisante) sobre el procesador antes de colocar el disipador y el ventilador. Se conecta el cable de corriente a CPU_FAN.</li>
+                    <li><strong>Caja:</strong> Lo ideal es un flujo de aire donde el ventilador inferior introduce aire frío y el superior extrae aire caliente.</li>
+                </ul>
+
+                <h4>Memoria RAM</h4>
+                <ul>
+                    <li><strong>Instalación:</strong> Se abren las pestañas laterales del zócalo. Se alinea la muesca del módulo y se presiona hasta oír un "clic" y ver que las pestañas se cierran solas. Si hay varios zócalos, usar primero el marcado como "1".</li>
+                </ul>
+
+                <h3>2. Almacenamiento y Energía</h3>
+                
+                <h4>Fuente de Alimentación</h4>
+                <p>Se coloca en su hueco y se atornilla desde el exterior. Se conectan los cables a la placa base (ATX 20/24 pines + 12V auxiliar) y a las unidades de disco.</p>
+
+                <h4>Disco Duro</h4>
+                <p>Se coloca en las bahías internas (generalmente 3.5"). Si es IDE, hay que configurar el Jumper como Maestro o Esclavo. Se conecta el cable de datos (IDE/SATA) y el de alimentación.</p>
+
+                <h4>Unidades Ópticas (CD/DVD/BluRay)</h4>
+                <p>Se instalan desde el exterior hacia el interior de la caja (al revés que los discos duros). Requieren retirar el embellecedor frontal de la caja.</p>
+
+                <h3>3. Tarjetas de Expansión</h3>
+                <p>Se retira la pletina metálica trasera de la caja correspondiente al slot. Se inserta la tarjeta (ej. gráfica, red) presionando firmemente y se atornilla al chasis. Algunas requieren alimentación extra.</p>
+
+                <h3>4. Periféricos Externos</h3>
+                
+                <h4>Monitor</h4>
+                <p>Se monta la base, se conecta a la corriente y al puerto de vídeo (VGA, DVI, HDMI) del PC.</p>
+
+                <h4>Teclado y Ratón</h4>
+                <ul>
+                    <li><strong>USB:</strong> Conexión directa (Plug & Play).</li>
+                    <li><strong>PS/2:</strong> Conector verde para ratón y violeta para teclado.</li>
+                </ul>
+
+                <h4>Altavoces</h4>
+                <p>El conector jack verde (estéreo) va a la tarjeta de sonido. En sistemas 2.0, un altavoz es el "principal" (recibe corriente y audio) y el otro es "secundario".</p>
+
+                <h4>Impresora</h4>
+                <p>Antes de instalar, hay que preparar los cartuchos (agitar el tóner en láser o quitar precintos en inyección). Generalmente usan USB.</p>
+
+                <h4>Escáner</h4>
+                <p>Es vital desbloquear la pestaña de bloqueo del carro (candado) antes de usarlo para evitar averías mecánicas.</p>
+
+                <h3>5. Normativa y Calidad (Mundo Laboral)</h3>
+                <p>Es importante conocer las certificaciones de calidad y eficiencia:</p>
+                <ul>
+                    <li><strong>ISO 9001:</strong> Normalización de calidad internacional.</li>
+                    <li><strong>AENOR:</strong> Asociación Española de Normalización.</li>
+                    <li><strong>Energy Star:</strong> Certificación de ahorro de energía.</li>
+                    <li><strong>80Plus:</strong> Certificación de eficiencia en fuentes de alimentación (Bronze, Silver, Gold, Platinum, Titanium).</li>
+                </ul>
+            `
+        },
+        {
+            title: 'Tema 9: Seguridad y Procedimientos de Montaje',
+            desc: 'Precauciones de seguridad, herramientas, montaje paso a paso y utilidades de diagnóstico.',
+            content: `
+                <h3>1. Precauciones y Advertencias de Seguridad</h3>
+                <p>Antes de tocar cualquier componente, es crítico seguir normas para proteger tanto al técnico como al equipo.</p>
+                
+                <h4>El puesto de montaje</h4>
+                <ul>
+                    <li><strong>Orden y limpieza:</strong> Es vital aspirar el polvo (fuera del puesto) para evitar sobrecalentamientos.</li>
+                    <li><strong>Ambiente:</strong> Evitar humedad excesiva y asegurar buena ventilación e iluminación (preferiblemente natural).</li>
+                    <li><strong>Electricidad:</strong> La instalación eléctrica del taller debe ser adecuada y segura.</li>
+                </ul>
+
+                <h4>Seguridad Eléctrica</h4>
+                <ul>
+                    <li>Usar siempre enchufes con toma de tierra.</li>
+                    <li>Desconectar totalmente los equipos de la corriente antes de manipularlos. En portátiles, retirar la batería.</li>
+                </ul>
+
+                <h4>Seguridad Electrónica (ESD)</h4>
+                <ul>
+                    <li><strong>Descarga electrostática:</strong> El técnico debe descargarse de energía estática (tocando metal o usando pulseras) antes de tocar nada.</li>
+                    <li><strong>Manipulación:</strong> Los componentes (RAM, tarjetas) se deben coger por los bordes, nunca tocando los pines o chips.</li>
+                    <li><strong>Fuente de alimentación:</strong> Nunca manipular su interior, incluso desconectada, ya que sus condensadores almacenan alta tensión.</li>
+                    <li><strong>Almacenaje:</strong> Usar bolsas antiestáticas y no apilar componentes unos encima de otros.</li>
+                </ul>
+
+                <h3>2. Herramientas y Útiles del Técnico</h3>
+                <p>Kit básico necesario para el ensamblaje y diagnóstico:</p>
+                
+                <h4>Herramientas principales</h4>
+                <ul>
+                    <li><strong>Multímetro:</strong> Para medir voltajes y comprobar si la fuente de alimentación funciona correctamente.</li>
+                    <li><strong>Soldador:</strong> Para reparaciones electrónicas, unir cables o crear conectores.</li>
+                    <li><strong>Destornilladores:</strong> Un juego de precisión es esencial.</li>
+                    <li><strong>Herramientas para portátiles/móviles:</strong> Púas, espátulas y pinzas (para cables planos y conectores pequeños).</li>
+                </ul>
+
+                <h4>Consumibles</h4>
+                <ul>
+                    <li><strong>Pasta térmica:</strong> Compuesto (cerámico o metálico) para mejorar la conducción de calor entre el procesador y el disipador.</li>
+                    <li><strong>Tubo retráctil:</strong> Para aislar empalmes de cables.</li>
+                    <li><strong>Bridas y tornillería:</strong> Para organizar cables y fijar componentes (usando siempre la métrica de tornillo adecuada).</li>
+                </ul>
+
+                <h3>3. Montaje del Equipo (Paso a Paso)</h3>
+                
+                <h4>3.1. La Placa Base</h4>
+                <ul>
+                    <li><strong>Máscara (I/O Shield):</strong> Primero se fija la chapa metálica trasera en el hueco de la caja.</li>
+                    <li><strong>Tornillos espaciadores:</strong> Se colocan los separadores (latón) en el chasis para elevar la placa y evitar cortocircuitos.</li>
+                    <li><strong>Fijación:</strong> Se atornilla la placa base sobre estos espaciadores.</li>
+                </ul>
+
+                <h4>3.2. Microprocesador y Refrigeración</h4>
+                <ul>
+                    <li><strong>Zócalo (Socket):</strong> Se levanta la palanca de seguridad.</li>
+                    <li><strong>Colocación:</strong> Se alinea el procesador (mirando las muescas o el triángulo dorado) y se deja caer suavemente sin forzar.</li>
+                    <li><strong>Fijación:</strong> Se baja la palanca para anclarlo.</li>
+                    <li><strong>Refrigeración:</strong> Se aplica pasta térmica (si no la trae pre-aplicada), se ancla el disipador encima y se conecta el ventilador al conector CPU_FAN de la placa.</li>
+                </ul>
+
+                <h4>3.3. Memoria RAM</h4>
+                <ul>
+                    <li>Se alinean las muescas del módulo con el banco de memoria.</li>
+                    <li>Se presiona firmemente por los extremos hasta que las pestañas laterales se cierren solas (hagan "clic").</li>
+                </ul>
+
+                <h4>3.4. Discos Duros y SSD</h4>
+                <ul>
+                    <li>Se atornilla la unidad en su bahía correspondiente.</li>
+                    <li>Se conectan dos cables: el de Datos (SATA) a la placa base y el de Alimentación a la fuente.</li>
+                </ul>
+
+                <h4>3.5. Panel Frontal y Resto de Conexiones</h4>
+                <p>Este es uno de los pasos más delicados:</p>
+                <ul>
+                    <li><strong>Front Panel:</strong> Se conectan los cables pequeños de la caja (Botón de encendido, Reset, LED de disco duro, LED de encendido) a los pines correspondientes de la placa.</li>
+                    <li><strong>USB y Audio:</strong> Se conectan los puertos frontales de la caja a los conectores internos de la placa.</li>
+                    <li><strong>Alimentación Principal:</strong> Se conecta el cable ATX de 24 pines (alimentación general) y el cable ATX 12V (alimentación extra para el procesador).</li>
+                </ul>
+
+                <h4>3.6. Verificación</h4>
+                <p>Antes de cerrar, se hace una inspección visual (tornillos flojos, cables sueltos, disipador firme). Luego se arranca el equipo; si no hay sistema operativo, debería salir un mensaje pidiendo un "Boot device". Se entra en la BIOS para configurar la secuencia de arranque.</p>
+
+                <h3>4. Utilidades de Chequeo y Diagnóstico</h3>
+                <p>Una vez montado, o para reparar averías, se usan herramientas de diagnóstico:</p>
+                
+                <ul>
+                    <li><strong>BIOS/UEFI:</strong> Permite monitorizar el hardware a bajo nivel sin necesidad de sistema operativo. Muestra voltajes (del procesador y chipset), temperaturas y velocidad de los ventiladores.</li>
+                    <li><strong>Chequeo de Memoria:</strong> Si el equipo sufre reinicios inesperados, puede ser fallo de la RAM. Windows incluye herramientas administrativas para testear cada celda de memoria.</li>
+                    <li><strong>Conectividad de Red:</strong> Si no hay internet, se debe verificar físicamente el cable/tarjeta, luego los drivers, y finalmente la configuración del sistema operativo (que no esté deshabilitada).</li>
+                </ul>
+            `
         }
     ],
     'ISO': [
@@ -636,7 +967,7 @@ const topicsData = {
     ],
 };
 
-// Mock Data
+// Datos de ejemplo (recursos de muestra)
 const initialResources = [
     {
         id: 1,
@@ -696,26 +1027,26 @@ const initialResources = [
 
 let resources = [...initialResources];
 
-// State
+// Estado de la aplicación
 let currentYear = 1;
 let currentSubject = 'all';
 let currentSearch = '';
 
-// DOM Elements
+// Elementos del DOM
 const resourceGrid = document.getElementById('resourceGrid');
 const searchInput = document.getElementById('searchInput');
 const filterContainer = document.getElementById('filterContainer');
 const yearBtns = document.querySelectorAll('.year-btn');
 const topicsContainer = document.getElementById('topicsContainer');
 
-// Initialize
+// Inicialización de la aplicación
 function init() {
     renderSubjectFilters();
     renderTopics();
     renderResources();
 }
 
-// Render Subject Filters
+// Renderizar filtros de asignaturas
 function renderSubjectFilters() {
     const currentSubjects = subjects[currentYear];
 
@@ -727,18 +1058,18 @@ function renderSubjectFilters() {
 
     filterContainer.innerHTML = html;
 
-    // Add event listeners to new buttons
+    // Añadir event listeners a los nuevos botones
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             currentSubject = btn.dataset.subject;
-            renderSubjectFilters(); // Re-render to update active state
-            renderTopics(); // Render topics for selected subject
+            renderSubjectFilters(); // Re-renderizar para actualizar el estado activo
+            renderTopics(); // Renderizar temas de la asignatura seleccionada
             renderResources();
         });
     });
 }
 
-// Render Topics
+// Renderizar temas de la asignatura seleccionada
 function renderTopics() {
     topicsContainer.innerHTML = '';
 
@@ -751,23 +1082,35 @@ function renderTopics() {
     let html = `<h3><i class="${subjectIcon}"></i> Temas de ${currentSubject}</h3><div class="topics-grid">`;
 
     topics.forEach((topic, index) => {
-        // Extract topic number from title (e.g., "Tema 1:" -> 1)
+        // Extraer número de tema del título (ej. "Tema 1:" -> 1)
         const topicNumber = topic.title.match(/Tema (\d+)/)?.[1] || (index + 1);
-        html += `
-            <div class="topic-card">
-                <div class="topic-number"><i class="fa-solid fa-book-open"></i> ${topicNumber}</div>
-                <h4>${topic.title}</h4>
-                <p>${topic.desc}</p>
-                ${topic.content ? `<button class="btn-read-more" onclick="openTopicModal('${currentSubject}', ${index})">Leer más</button>` : ''}
-            </div>
-        `;
+
+        // Si el tema tiene contenido, hacer toda la tarjeta clickeable
+        if (topic.content) {
+            html += `
+                <div class="topic-card topic-card-clickable" onclick="openTopicModal('${currentSubject}', ${index})" style="cursor: pointer;">
+                    <div class="topic-number"><i class="fa-solid fa-book-open"></i> ${topicNumber}</div>
+                    <h4>${topic.title}</h4>
+                    <p>${topic.desc}</p>
+                </div>
+            `;
+        } else {
+            // Si no tiene contenido, mostrar la tarjeta sin hacer clickeable
+            html += `
+                <div class="topic-card">
+                    <div class="topic-number"><i class="fa-solid fa-book-open"></i> ${topicNumber}</div>
+                    <h4>${topic.title}</h4>
+                    <p>${topic.desc}</p>
+                </div>
+            `;
+        }
     });
 
     html += '</div>';
     topicsContainer.innerHTML = html;
 }
 
-// Render Resources
+// Renderizar recursos (tarjetas de contenido)
 function renderResources() {
     resourceGrid.innerHTML = '';
 
@@ -810,7 +1153,7 @@ function renderResources() {
     });
 }
 
-// Modal Logic
+// Lógica del modal de temas
 window.openTopicModal = function (subject, index) {
     const topic = topicsData[subject][index];
     if (!topic || !topic.content) return;
@@ -837,17 +1180,17 @@ if (topicModalOverlay) {
     });
 }
 
-// Event Listeners
+// Event Listeners (Escuchadores de eventos)
 yearBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         yearBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         currentYear = parseInt(btn.dataset.year);
-        currentSubject = 'all'; // Reset subject when changing year
+        currentSubject = 'all'; // Resetear asignatura al cambiar de curso
 
         renderSubjectFilters();
-        renderTopics(); // Clear topics when changing year
+        renderTopics(); // Limpiar temas al cambiar de curso
         renderResources();
     });
 });
@@ -857,6 +1200,6 @@ searchInput.addEventListener('input', (e) => {
     renderResources();
 });
 
-// Start
+// Iniciar la aplicación
 init();
 

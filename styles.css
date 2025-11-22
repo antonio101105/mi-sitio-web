@@ -1,14 +1,14 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-color: #38bdf8;
-    --accent-glow: rgba(56, 189, 248, 0.3);
-    --gradient-start: #38bdf8;
-    --gradient-end: #818cf8;
-    --font-main: 'Outfit', sans-serif;
+    --bg-color: #282a36;
+    --card-bg: rgba(20, 15, 35, 0.85);
+    --card-border: rgba(189, 147, 249, 0.3);
+    --text-primary: #e0e6ff;
+    --text-secondary: #c4b5fd;
+    --accent-color: #ff79c6;
+    --accent-glow: rgba(255, 121, 198, 0.4);
+    --gradient-start: #ff79c6;
+    --gradient-end: #bd93f9;
+    --font-main: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
     --transition: all 0.3s ease;
 }
 
@@ -20,11 +20,32 @@
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-color);
+    background-image: url('images/fondo.png');
+    background-size: 110%;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    position: relative;
+}
+
+/* Overlay mínimo para legibilidad sin ocultar el fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(20, 15, 35, 0.25) 0%,
+            rgba(40, 42, 54, 0.30) 100%);
+    box-shadow: inset -350px -350px 300px -100px rgba(20, 15, 35, 0.65);
+    z-index: -1;
+    pointer-events: none;
 }
 
 /* Background Glow Effect */
@@ -634,6 +655,7 @@ footer {
         content: '...';
     }
 }
+
 /* Efecto mejorado para tarjetas clickeables */
 .topic-card-clickable:hover {
     background: rgba(255, 255, 255, 0.08);

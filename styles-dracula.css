@@ -1,0 +1,54 @@
+:root {
+    /* Tema: Dracula Dark Optimizado - Mejorado para fondo cyberpunk */
+    --bg-color: #282a36;
+    --card-bg: rgba(20, 15, 35, 0.85);
+    --card-border: rgba(189, 147, 249, 0.3);
+    --text-primary: #e0e6ff;
+    --text-secondary: #c4b5fd;
+    --accent-color: #ff79c6;
+    --accent-glow: rgba(255, 121, 198, 0.4);
+    --gradient-start: #ff79c6;
+    --gradient-end: #bd93f9;
+    --font-main: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-image: url('images/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Overlay oscuro para mejorar legibilidad */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+            rgba(20, 15, 35, 0.80) 0%,
+            rgba(40, 42, 54, 0.85) 100%);
+    box-shadow: inset -250px -250px 200px -50px rgba(20, 15, 35, 0.95);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Badge de número de tema con color del acento */
+.topic-number {
+    color: var(--accent-color);
+}

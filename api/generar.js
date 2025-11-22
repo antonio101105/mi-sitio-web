@@ -1,91 +1,73 @@
-// Este código se ejecuta en los servidores de Vercel, no en el navegador del usuario.
-// Así tu API Key está segura.
+// ESTE ARCHIVO VA EN LA CARPETA "api"
+// Nombre del archivo: api/generar.js
 
-export default async function handler(req, res) {
-    // 1. Configuración de seguridad CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+export const config = {
+    runtime: 'edge', // Usamos Edge para que sea más rápido
+};
 
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-
+export default async function handler(req) {
+    // 1. Seguridad: Solo permitir peticiones POST
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Método no permitido' });
+        return new Response(JSON.stringify({ error: 'Método no permitido' }), {
+            status: 405,
+            headers: { 'Content-Type': 'application/json' },
+        });
     }
 
-    const { contenido, tipo } = req.body;
-    const apiKey = process.env.GEMINI_API_KEY; // La clave se guarda en las variables de entorno de Vercel
-
-    if (!apiKey) {
-        return res.status(500).json({ error: 'API Key no configurada' });
-    }
-
-    // 2. Definir el prompt según lo que pidas
-    let prompt = "";
-
-    switch (tipo) {
-        case 'resumen':
-            prompt = `Haz un resumen estructurado y claro del siguiente texto educativo de ASIR (Administración de Sistemas Informáticos en Red). Usa formato HTML con etiquetas <h4>, <p>, <ul>, <li> para organizar la información:\n\n${contenido}`;
-            break;
-
-        case 'test':
-            prompt = `Genera 5 preguntas tipo test con 4 opciones de respuesta múltiple sobre este texto de ASIR. Formato HTML:
-      - Cada pregunta en un <div class="pregunta">
-      - Título de pregunta en <h4>
-      - Opciones en <ul> con <li>
-      - Al final, indica las respuestas correctas en un <div class="respuestas">
-      
-      Texto:\n${contenido}`;
-            break;
-
-        case 'mapa':
-            prompt = `Crea un diagrama de flujo en sintaxis Mermaid.js que represente visualmente los conceptos principales de este texto educativo. Usa nodos, flechas y agrupaciones lógicas. Solo devuelve el código Mermaid sin explicaciones adicionales:\n\n${contenido}`;
-            break;
-
-        case 'explicacion':
-            prompt = `Explica de forma sencilla y didáctica los conceptos más importantes de este texto, como si fueras un profesor explicándoselo a un estudiante de ASIR. Usa ejemplos prácticos y formato HTML con <h4>, <p>, <strong>:\n\n${contenido}`;
-            break;
-
-        default:
-            return res.status(400).json({ error: 'Tipo de solicitud no válido' });
-    }
-
-    // 3. Llamada a la API de Google Gemini
     try {
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{
-                        parts: [{ text: prompt }]
-                    }],
-                    generationConfig: {
-                        temperature: 0.7,
-                        maxOutputTokens: 2048,
-                    }
-                })
-            }
-        );
+        // 2. Obtener datos del frontend
+        const { contenido, tipo } = await req.json();
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error?.message || 'Error en la API de Gemini');
+        // 3. Obtener la clave de Vercel (Aquí es donde busca la Key "GEMINI_API_KEY")
+        const apiKey = process.env.GEMINI_API_KEY;
+
+        if (!apiKey) {
+            return new Response(JSON.stringify({ error: 'Falta la API Key en Vercel' }), { status: 500 });
         }
 
-        const data = await response.json();
-        const textoGenerado = data.candidates[0].content.parts[0].text;
+        // 4. Preparar el Prompt (Instrucciones para la IA)
+        let prompt = "";
+        if (tipo === 'resumen') {
+            prompt = `Actúa como un profesor experto. Haz un resumen estructurado, claro y conciso del siguiente texto para un estudiante de Grado Superior. Usa negritas para conceptos clave:\n\n${contenido}`;
+        } else if (tipo === 'test') {
+            prompt = `Genera 3 preguntas de examen tipo test (con opciones A, B, C) sobre el siguiente texto. Al final de las 3 preguntas, añade una sección llamada 'SOLUCIONES' indicando la correcta. Formato HTML limpio:\n\n${contenido}`;
+        } else if (tipo === 'mapa') {
+            prompt = `Genera ÚNICAMENTE el código para un diagrama de flujo usando sintaxis Mermaid.js sobre el siguiente texto. Debe ser un gráfico de arriba a abajo (graph TD). No incluyas explicaciones, solo el código dentro de bloques mermaid:\n\n${contenido}`;
+        } else {
+            prompt = `Explica este contenido de forma sencilla:\n\n${contenido}`;
+        }
 
-        res.status(200).json({ resultado: textoGenerado });
+        // 5. Llamar a Google Gemini
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
+        });
+
+        const data = await response.json();
+
+        // Verificar si Google dio error
+        if (!response.ok) {
+            console.error("Error de Google:", data);
+            return new Response(JSON.stringify({ error: data.error?.message || 'Error en la IA' }), { status: 500 });
+        }
+
+        // Extraer el texto de la respuesta
+        let textoGenerado = data.candidates[0].content.parts[0].text;
+
+        // 6. Devolver respuesta al Frontend
+        return new Response(JSON.stringify({ resultado: textoGenerado }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
 
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({
-            error: 'Error conectando con la IA',
-            detalles: error.message
+        console.error(error);
+        return new Response(JSON.stringify({ error: 'Error interno del servidor' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
         });
     }
 }

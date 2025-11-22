@@ -1,0 +1,13 @@
+{
+    "name": "mi-temario-ia",
+    "version": "1.0.0",
+    "description": "Plataforma de estudio con IA",
+    "main": "index.html",
+    "scripts": {
+        "start": "echo 'El proyecto estático está listo'"
+    },
+    "dependencies": {},
+    "engines": {
+        "node": "18.x"
+    }
+}

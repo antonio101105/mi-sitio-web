@@ -31,6 +31,18 @@ const topicsData = {
         {
             title: 'Tema 1: Unidades Funcionales',
             desc: 'Introducción, Arquitectura Von Neumann, Memoria, E/S, UAL, UC y Ciclo de Instrucción.',
+            quiz: [
+                { q: '¿Cuál es la unidad fundamental de información digital para el ordenador, con dos posibles valores (0 o 1)?', opts: ['Palabra (Word)', 'Byte (B)', 'Bit (b)', 'Nibble'], correct: 2 },
+                { q: 'La arquitectura de ordenador más aceptada en la actualidad, propuesta por John von Neumann, consta de las siguientes partes, excepto:', opts: ['Unidad de Memoria', 'Unidad de Control', 'Unidad de Proceso (CPU)', 'Unidad de Software'], correct: 3 },
+                { q: '¿Qué tipo de información se caracteriza por tener infinitos valores intermedios entre dos valores?', opts: ['Digital', 'Analógica', 'Cuántica', 'Binaria'], correct: 1 },
+                { q: '¿Qué componente de la arquitectura de Von Neumann se encarga tanto de almacenar la información como los programas?', opts: ['Unidad Aritmético-Lógica', 'Unidad de Control', 'Unidad de Memoria', 'Unidad de Entrada/Salida'], correct: 2 },
+                { q: '¿Cuántos bits componen un Byte (B)?', opts: ['4 bits', '8 bits', '16 bits', '1024 bits'], correct: 1 },
+                { q: '¿Cuál es la agrupación de bits que se denomina "Palabra" (Word)?', opts: ['8 bits', '32 bits', '16 bits', '64 bits'], correct: 2 },
+                { q: '¿Qué es un ordenador digital según la Unidad 1?', opts: ['Un aparato que trata información analógica', 'Un aparato cuya misión es procesar información digitalmente', 'Un aparato que solo realiza cálculos matemáticos', 'El primer ordenador cuántico'], correct: 1 },
+                { q: '¿Qué significa el concepto de "programa almacenado" que caracteriza a la arquitectura de Von Neumann?', opts: ['Que el programa se guarda en la nube', 'Que el programa se almacena en la Unidad de Memoria junto a la información', 'Que el programa se almacena en el microprocesador', 'Que el programa se almacena en un disco duro externo'], correct: 1 },
+                { q: '¿Qué se denomina Exabyte (EB) en las unidades de información?', opts: ['1024 KB', '1024 GB', '1024 TB', '1024 PB'], correct: 3 },
+                { q: '¿Qué registro de la CPU almacena la dirección del dato que se va a leer o escribir?', opts: ['Registro de Datos (RM)', 'Registro de Direcciones (RD)', 'Contador de Programa (CP)', 'Acumulador (AC)'], correct: 1 }
+            ],
             content: `
                 <h3>1. Introducción y Conceptos Básicos</h3>
                 <p>Un ordenador es, en términos generales, un aparato cuya misión es procesar información. Su evolución histórica ha estado ligada a los avances tecnológicos disponibles en cada momento. Es fundamental distinguir el tipo de información que procesan:</p>
@@ -119,6 +131,18 @@ const topicsData = {
         {
             title: 'Tema 2: La Placa Base',
             desc: 'Factor de forma, componentes principales, socket, chipset, BIOS, memoria y buses de expansión.',
+            quiz: [
+                { q: '¿Cuál es el factor de forma estándar actual para placas base de sobremesa?', opts: ['AT', 'Baby-AT', 'ATX', 'BTX'], correct: 2 },
+                { q: '¿Qué componente del chipset gestiona los dispositivos rápidos como la RAM y la gráfica?', opts: ['Puente Sur', 'Puente Norte', 'BIOS', 'CMOS'], correct: 1 },
+                { q: '¿Qué tipo de zócalo de memoria es el estándar actual para ordenadores de sobremesa?', opts: ['SIMM', 'DIMM', 'SO-DIMM', 'RIMM'], correct: 1 },
+                { q: '¿Qué bus de expansión utiliza transmisión en serie y es el estándar actual para gráficas?', opts: ['PCI', 'AGP', 'ISA', 'PCI-Express'], correct: 3 },
+                { q: '¿Cuál es la función principal de la BIOS?', opts: ['Almacenar datos del usuario', 'Gestionar la conexión a Internet', 'Realizar el test de arranque (POST) y cargar el SO', 'Enfriar el procesador'], correct: 2 },
+                { q: '¿Qué factor de forma fue lanzado por Intel en 2004 para mejorar el flujo de aire pero no tuvo éxito?', opts: ['ATX', 'BTX', 'ITX', 'WTX'], correct: 1 },
+                { q: '¿Qué componente mantiene la configuración de la BIOS cuando el PC está apagado?', opts: ['El Chipset', 'La Pila (CR2032)', 'El Puente Norte', 'La Fuente de Alimentación'], correct: 1 },
+                { q: '¿Qué significa las siglas ZIF en un socket?', opts: ['Zero Insertion Force', 'Zone Integrated Format', 'Zoom In Function', 'Zero Interface Factor'], correct: 0 },
+                { q: '¿Cuál es el conector de alimentación principal de una placa ATX moderna?', opts: ['20 pines', '24 pines', '12 pines', '8 pines'], correct: 1 },
+                { q: '¿Qué bus se utilizaba exclusivamente para tarjetas gráficas antes del PCIe?', opts: ['PCI', 'ISA', 'AGP', 'VESA'], correct: 2 }
+            ],
             content: `
                 <h3>1. Factor de forma</h3>
                 <p>Un ordenador está compuesto por componentes de diferentes fabricantes. Para garantizar la compatibilidad, existen normas que definen dimensiones, anclajes y distribución eléctrica. A esto se le llama factor de forma.</p>
@@ -280,6 +304,18 @@ const topicsData = {
         {
             title: 'Tema 3: Componentes del Ordenador',
             desc: 'Caja, fuente de alimentación, CPU, refrigeración, RAM, almacenamiento y tarjetas de expansión.',
+            quiz: [
+                { q: '¿Qué conector de la fuente de alimentación alimenta la placa base principal?', opts: ['Molex', 'SATA', 'ATX 20/24 pines', 'PCIe 6 pines'], correct: 2 },
+                { q: '¿Qué arquitectura de procesador se caracteriza por tener un conjunto de instrucciones reducido y simple?', opts: ['CISC', 'RISC', 'EPIC', 'SIMD'], correct: 1 },
+                { q: '¿Cuál es la función de la pasta térmica?', opts: ['Pegar el disipador al procesador', 'Eliminar el aire para mejorar la conducción de calor', 'Aislar eléctricamente el procesador', 'Lubricar el ventilador'], correct: 1 },
+                { q: '¿Qué característica define a la memoria RAM?', opts: ['Es memoria no volátil', 'Almacena datos permanentemente', 'Es memoria de acceso aleatorio y volátil', 'Es más lenta que el disco duro'], correct: 2 },
+                { q: '¿Cuál es una ventaja principal de los SSD frente a los HDD?', opts: ['Menor precio por GB', 'Mayor capacidad máxima', 'Resistencia a golpes y velocidad', 'Recuperación de datos más sencilla'], correct: 2 },
+                { q: '¿Qué tipo de caja es la más habitual para un usuario estándar?', opts: ['Gran Torre', 'Semitorre', 'Slim', 'Barebone'], correct: 1 },
+                { q: '¿Qué voltajes de salida continua ofrece una fuente ATX estándar?', opts: ['110V y 220V', '3.3V, 5V y 12V', '1.5V y 9V', 'Solo 12V'], correct: 1 },
+                { q: '¿Qué elemento de la refrigeración líquida se encarga de enfriar el líquido?', opts: ['La bomba', 'El bloque de agua', 'El radiador', 'El depósito'], correct: 2 },
+                { q: '¿Qué componente convierte la corriente alterna en continua?', opts: ['La placa base', 'El procesador', 'La fuente de alimentación', 'El disco duro'], correct: 2 },
+                { q: '¿Qué tipo de memoria RAM se usa habitualmente en portátiles?', opts: ['DIMM', 'SO-DIMM', 'SIMM', 'RIMM'], correct: 1 }
+            ],
             content: `
                 <h3>1. La Caja del Ordenador (Chasis)</h3>
                 <p>La caja no es solo un contenedor; su diseño afecta el rendimiento térmico y la expansión del equipo.</p>
@@ -410,6 +446,18 @@ const topicsData = {
         {
             title: 'Tema 4: Puertos y Conectores',
             desc: 'Tipos de conectores, puertos serie/paralelo, USB, Firewire, vídeo, audio, red, inalámbricos y alimentación.',
+            quiz: [
+                { q: '¿De qué color es habitualmente el conector Jack de 3.5mm para salida de altavoces?', opts: ['Rosa', 'Azul', 'Verde', 'Naranja'], correct: 2 },
+                { q: '¿Qué interfaz multimedia transmite audio y vídeo digital de alta definición en un solo cable?', opts: ['VGA', 'DVI', 'HDMI', 'RCA'], correct: 2 },
+                { q: '¿Qué conector se utiliza para redes Ethernet estándar?', opts: ['RJ-11', 'RJ-45', 'USB-B', 'PS/2'], correct: 1 },
+                { q: '¿Qué característica define al USB "Hot-swap"?', opts: ['Mayor velocidad de transferencia', 'Capacidad de carga eléctrica', 'Conexión y desconexión en caliente (sin apagar)', 'Conexión inalámbrica'], correct: 2 },
+                { q: '¿Qué puerto se utilizaba antiguamente para impresoras (LPT)?', opts: ['Puerto Serie', 'Puerto Paralelo', 'Puerto USB', 'Puerto Firewire'], correct: 1 },
+                { q: '¿Qué conector de vídeo es el sustituto natural del euroconector al llevar audio y vídeo?', opts: ['VGA', 'DVI', 'HDMI', 'S-Video'], correct: 2 },
+                { q: '¿De qué color es el puerto PS/2 para el teclado?', opts: ['Verde', 'Violeta', 'Azul', 'Negro'], correct: 1 },
+                { q: '¿Qué versión de USB alcanza una velocidad teórica de 4.8 Gbps?', opts: ['USB 1.1', 'USB 2.0', 'USB 3.0', 'USB-C'], correct: 2 },
+                { q: '¿Qué puerto inalámbrico requiere una línea de visión directa para funcionar?', opts: ['Bluetooth', 'WiFi', 'Infrarrojos (IrDA)', 'ZigBee'], correct: 2 },
+                { q: '¿Qué conector se usa para la alimentación extra de tarjetas gráficas PCIe?', opts: ['Molex', 'SATA', 'PEG (6 u 8 pines)', 'ATX 4 pines'], correct: 2 }
+            ],
             content: `
                 <h3>1. Conceptos Básicos de Conexión</h3>
                 <p>Los ordenadores utilizan "puertos" (en la placa o tarjetas) y "conectores" (en los cables) para interconectar dispositivos.</p>
@@ -533,6 +581,18 @@ const topicsData = {
         {
             title: 'Tema 5: Periféricos de Entrada',
             desc: 'Teclado, ratón, escáner, tableta digitalizadora, webcam/netcam y micrófono.',
+            quiz: [
+                { q: '¿Qué tecnología de ratón utiliza un sensor óptico y un procesador de señal digital (DSP)?', opts: ['Ratón mecánico', 'Ratón de bola', 'Ratón óptico', 'Trackpoint'], correct: 2 },
+                { q: '¿Qué significa OCR en el contexto de un escáner?', opts: ['Reconocimiento Óptico de Marcas', 'Reconocimiento Óptico de Caracteres', 'Resolución de Color Óptima', 'Organización de Recursos'], correct: 1 },
+                { q: '¿Qué tipo de teclado es el más común en ordenadores de sobremesa por su mecanismo?', opts: ['Mecánico', 'De membrana', 'Proyección láser', 'Flexible'], correct: 1 },
+                { q: '¿Qué dispositivo es fundamental para el diseño gráfico por detectar presión e inclinación?', opts: ['Ratón gamer', 'Trackball', 'Tableta digitalizadora', 'Touchpad'], correct: 2 },
+                { q: '¿Qué diferencia principal tiene una Netcam (Cámara IP) de una Webcam?', opts: ['Tiene menor resolución', 'No necesita un PC, se conecta directo a la red', 'Solo funciona con USB', 'Es en blanco y negro'], correct: 1 },
+                { q: '¿Qué tipo de escáner se usa para corregir exámenes tipo test automáticamente?', opts: ['OCR', 'OMR', 'Código de Barras', 'Escáner 3D'], correct: 1 },
+                { q: '¿Qué tecla se utiliza para capturar la pantalla?', opts: ['Esc', 'Supr', 'Impr Pant', 'Bloq Num'], correct: 2 },
+                { q: '¿Cómo se llama el ratón que tiene una bola en la parte superior y se mueve con el dedo?', opts: ['Touchpad', 'Trackpoint', 'Trackball', 'Ratón mecánico'], correct: 2 },
+                { q: '¿Qué periférico de entrada digitaliza documentos físicos?', opts: ['Impresora', 'Escáner', 'Webcam', 'Monitor'], correct: 1 },
+                { q: '¿Qué conexión es la más habitual hoy en día para teclados y ratones?', opts: ['PS/2', 'Puerto Serie', 'USB', 'Paralelo'], correct: 2 }
+            ],
             content: `
                 <h3>1. Concepto General de Periférico de Entrada</h3>
                 <p>Un periférico de entrada es el dispositivo encargado de digitalizar el mundo exterior. Su función es transformar información física (pulsaciones, luz, sonido, movimiento) en señales eléctricas codificadas (código binario) que el ordenador puede procesar.</p>
@@ -629,6 +689,18 @@ const topicsData = {
         {
             title: 'Tema 6: Periféricos de Salida',
             desc: 'Monitor, impresora, plóter, altavoces y teoría del color.',
+            quiz: [
+                { q: '¿Qué modelo de color se utiliza en los monitores (mezcla aditiva)?', opts: ['CMYK', 'RGB', 'HSB', 'Pantone'], correct: 1 },
+                { q: '¿Qué tecnología de impresión utiliza tóner y un rodillo fotosensible?', opts: ['Inyección de tinta', 'Matricial', 'Láser', 'Térmica'], correct: 2 },
+                { q: '¿Qué parámetro del monitor define la distancia entre puntos del mismo color?', opts: ['Resolución', 'Tasa de refresco', 'Dot pitch', 'Luminancia'], correct: 2 },
+                { q: '¿Para qué se utiliza principalmente un Plóter?', opts: ['Imprimir facturas', 'Impresión fotográfica doméstica', 'Planos de arquitectura y gran formato', 'Imprimir tickets de compra'], correct: 2 },
+                { q: '¿Qué conector de vídeo es puramente analógico?', opts: ['HDMI', 'DVI-D', 'VGA', 'DisplayPort'], correct: 2 },
+                { q: '¿Qué tecnología de monitor utiliza un cañón de electrones?', opts: ['LCD', 'LED', 'CRT', 'TFT'], correct: 2 },
+                { q: '¿Qué colores forman el modelo CMYK usado en impresoras?', opts: ['Rojo, Verde, Azul', 'Cian, Magenta, Amarillo, Negro', 'Blanco y Negro', 'Colores primarios'], correct: 1 },
+                { q: '¿Qué tipo de impresora utiliza agujas para golpear una cinta entintada?', opts: ['Láser', 'Inyección', 'Matricial', 'Térmica'], correct: 2 },
+                { q: '¿Qué altavoz en un sistema 5.1 se encarga de los sonidos graves?', opts: ['Delantero derecho', 'Trasero izquierdo', 'Subwoofer', 'Central'], correct: 2 },
+                { q: '¿Qué conexión de vídeo es capaz de enviar señal tanto analógica como digital?', opts: ['VGA', 'DVI-D', 'DVI-I', 'RCA'], correct: 2 }
+            ],
             content: `
                 <h3>1. El Monitor</h3>
                 <p>Es el periférico más importante, encargado de mostrar la información procesada por el equipo.</p>
@@ -706,6 +778,18 @@ const topicsData = {
         {
             title: 'Tema 7: Dispositivos de Almacenamiento',
             desc: 'Disco duro (HDD), SSD, unidades ópticas (CD/DVD/BluRay), memorias flash y disquetes.',
+            quiz: [
+                { q: '¿Cuál es la unidad mínima de información física en un disco duro?', opts: ['Pista', 'Cilindro', 'Sector', 'Clúster'], correct: 2 },
+                { q: '¿Qué tecnología de memoria utilizan los SSD?', opts: ['Magnética', 'Óptica', 'Flash NAND', 'DRAM'], correct: 2 },
+                { q: '¿Cuál es la capacidad estándar de un DVD de una capa?', opts: ['700 MB', '4.7 GB', '8.5 GB', '25 GB'], correct: 1 },
+                { q: '¿Qué sistema de archivos es el estándar moderno para Windows?', opts: ['FAT32', 'ext4', 'NTFS', 'HFS+'], correct: 2 },
+                { q: '¿Qué ventaja tiene el láser azul del BluRay frente al rojo del DVD?', opts: ['Es más barato', 'Permite mayor densidad de datos (menor longitud de onda)', 'Es más rápido de leer', 'No se calienta'], correct: 1 },
+                { q: '¿A qué velocidad típica giran los discos duros de sobremesa?', opts: ['5400 rpm', '7200 rpm', '10000 rpm', '15000 rpm'], correct: 1 },
+                { q: '¿Qué interfaz de disco duro requiere configurar Jumpers como Maestro/Esclavo?', opts: ['SATA', 'SCSI', 'IDE (PATA)', 'USB'], correct: 2 },
+                { q: '¿Qué capacidad aproximada tiene un CD estándar?', opts: ['1.44 MB', '700 MB', '4.7 GB', '25 GB'], correct: 1 },
+                { q: '¿Qué componente del disco duro lee la información de los platos?', opts: ['El motor', 'El cabezal magnético', 'El bus de datos', 'La caché'], correct: 1 },
+                { q: '¿Qué formato de disco duro es el estándar para portátiles?', opts: ['3.5 pulgadas', '2.5 pulgadas', '5.25 pulgadas', '1.8 pulgadas'], correct: 1 }
+            ],
             content: `
                 <h3>1. El Disco Duro (HDD - Hard Disk Drive)</h3>
                 <p>Es el dispositivo de almacenamiento masivo por excelencia. Su función es guardar grandes cantidades de datos de forma permanente, incluyendo el sistema operativo.</p>
@@ -791,6 +875,18 @@ const topicsData = {
         {
             title: 'Tema 8: Montaje de Equipos Informáticos',
             desc: 'Instalación de componentes, cableado, refrigeración, periféricos y normativa de calidad.',
+            quiz: [
+                { q: '¿Dónde se debe aplicar la pasta térmica?', opts: ['En los pines del socket', 'Entre el procesador y el disipador', 'En la ranura de la RAM', 'En el conector de la fuente'], correct: 1 },
+                { q: '¿Qué precaución es vital al instalar la placa base en la caja?', opts: ['Usar tornillos de plástico', 'Instalar los separadores (latón) para evitar cortocircuitos', 'Conectar primero la corriente', 'Pegarla con adhesivo'], correct: 1 },
+                { q: '¿Qué certificación de calidad internacional es la más conocida?', opts: ['ISO 9001', 'Energy Star', '80 Plus', 'RoHS'], correct: 0 },
+                { q: '¿Cómo se debe instalar un módulo de RAM?', opts: ['Forzándolo si no entra', 'Alineando la muesca y presionando hasta oír clic', 'Con el ordenador encendido', 'Sin tocar los bordes'], correct: 1 },
+                { q: '¿Qué flujo de aire es el ideal en una caja?', opts: ['De arriba a abajo', 'De atrás hacia adelante', 'Entrada por el frente/abajo, salida por atrás/arriba', 'Aleatorio'], correct: 2 },
+                { q: '¿Qué tornillos se usan para elevar la placa base del chasis y evitar cortos?', opts: ['Tornillos de madera', 'Separadores o espaciadores (latón)', 'Tuercas ciegas', 'Clavos'], correct: 1 },
+                { q: '¿Qué conector alimenta el ventilador de la CPU en la placa base?', opts: ['SYS_FAN', 'CPU_FAN', 'PWR_FAN', 'CHA_FAN'], correct: 1 },
+                { q: '¿Cómo se debe apretar los tornillos de la placa base?', opts: ['Al máximo posible', 'En diagonal y sin exceso de presión', 'En círculo', 'Solo con la mano'], correct: 1 },
+                { q: '¿Qué es el I/O Shield?', opts: ['El escudo térmico', 'La chapa trasera de conexiones de la placa base', 'El protector del disco duro', 'La carcasa de la fuente'], correct: 1 },
+                { q: '¿Qué conector de la fuente alimenta los discos duros SATA?', opts: ['Molex', 'Conector plano SATA', 'ATX 24 pines', 'Floppy'], correct: 1 }
+            ],
             content: `
                 <h3>1. Componentes Principales (Placa, CPU, RAM)</h3>
                 
@@ -863,6 +959,18 @@ const topicsData = {
         {
             title: 'Tema 9: Seguridad y Procedimientos de Montaje',
             desc: 'Precauciones de seguridad, herramientas, montaje paso a paso y utilidades de diagnóstico.',
+            quiz: [
+                { q: '¿Qué riesgo principal se evita usando una pulsera antiestática?', opts: ['Electrocución del usuario', 'Daño por descarga electrostática (ESD) a los componentes', 'Cortocircuitos en la red eléctrica', 'Sobrecalentamiento'], correct: 1 },
+                { q: '¿Qué componente de la fuente de alimentación puede almacenar alta tensión incluso desconectada?', opts: ['Transformador', 'Ventilador', 'Condensadores', 'Bobinas'], correct: 2 },
+                { q: '¿Qué herramienta se usa para medir voltajes en la fuente?', opts: ['Osciloscopio', 'Multímetro (Polímetro)', 'Amperímetro', 'Probador de red'], correct: 1 },
+                { q: '¿Qué indica un pitido largo y varios cortos al arrancar (generalmente)?', opts: ['Todo está bien', 'Fallo de memoria RAM', 'Fallo de tarjeta gráfica o vídeo', 'Fallo de disco duro'], correct: 2 },
+                { q: '¿Qué es lo primero que se debe hacer antes de manipular el interior del PC?', opts: ['Desconectar la corriente eléctrica', 'Quitar el disco duro', 'Ponerse guantes de lana', 'Encender el monitor'], correct: 0 },
+                { q: '¿Qué herramienta es esencial para organizar los cables dentro de la caja?', opts: ['Cinta aislante', 'Bridas', 'Pegamento', 'Grapas'], correct: 1 },
+                { q: '¿Qué se debe hacer con la batería de un portátil antes de abrirlo?', opts: ['Cargarla al 100%', 'Retirarla', 'Descargarla completamente', 'No importa'], correct: 1 },
+                { q: '¿Por qué no se debe apilar componentes electrónicos unos encima de otros?', opts: ['Porque se rayan', 'Para evitar daños físicos o eléctricos (estática)', 'Porque ocupan mucho espacio', 'Porque se calientan'], correct: 1 },
+                { q: '¿Qué herramienta se usa para calentar y unir componentes electrónicos con estaño?', opts: ['Pistola de calor', 'Soldador', 'Mechero', 'Secador'], correct: 1 },
+                { q: '¿Qué componente nunca se debe abrir por riesgo de descarga de alta tensión?', opts: ['El disco duro', 'La unidad óptica', 'La fuente de alimentación', 'El ventilador'], correct: 2 }
+            ],
             content: `
                 <h3>1. Precauciones y Advertencias de Seguridad</h3>
                 <p>Antes de tocar cualquier componente, es crítico seguir normas para proteger tanto al técnico como al equipo.</p>
@@ -959,6 +1067,18 @@ const topicsData = {
         {
             title: 'Tema 10: Mantenimiento de Sistemas',
             desc: 'Gestión y cuidado de sistemas informáticos, niveles de mantenimiento y herramientas software.',
+            quiz: [
+                { q: '¿Qué tipo de mantenimiento busca actuar antes de que ocurra el fallo basándose en diagnósticos?', opts: ['Correctivo', 'Preventivo', 'Predictivo', 'Evolutivo'], correct: 2 },
+                { q: '¿Cuál es una tarea típica de mantenimiento a nivel de software?', opts: ['Limpiar el polvo de los ventiladores', 'Desfragmentar el disco duro', 'Cambiar la pasta térmica', 'Sustituir la fuente de alimentación'], correct: 1 },
+                { q: '¿Qué es un Sistema de Información (SI)?', opts: ['Un conjunto de ordenadores en red', 'Un sistema para el intercambio de información en una organización', 'Un programa antivirus', 'Una base de datos'], correct: 1 },
+                { q: '¿Qué herramienta se usa para comprobar la integridad del sistema de archivos?', opts: ['Defraggler', 'CCleaner', 'CHKDSK', 'RegCleaner'], correct: 2 },
+                { q: '¿Qué tipo de mantenimiento es el reemplazo de una pieza rota?', opts: ['Preventivo', 'Predictivo', 'Correctivo', 'Adaptativo'], correct: 2 },
+                { q: '¿Qué siglas identifican al Centro de Atención al Usuario?', opts: ['CPU', 'CAU', 'SAT', 'TIC'], correct: 1 },
+                { q: '¿Qué metodología de mantenimiento de sistemas se usa en España?', opts: ['ITIL', 'METRICA', 'ISO 27001', 'SCRUM'], correct: 1 },
+                { q: '¿Qué es el mantenimiento correctivo diferido (o variable)?', opts: ['El que se hace inmediatamente', 'El que se planifica porque no es urgente', 'El que se hace antes de que falle', 'El que mejora el sistema'], correct: 1 },
+                { q: '¿Qué programa se menciona para la limpieza de archivos innecesarios?', opts: ['Word', 'Excel', 'CCleaner', 'Paint'], correct: 2 },
+                { q: '¿Qué nivel de mantenimiento se encarga de actualizar los manuales?', opts: ['Nivel de Hardware', 'Nivel de Software', 'Nivel de Documentación', 'Nivel de Red'], correct: 2 }
+            ],
             content: `
                 <h3>1. Concepto de Sistema Informático</h3>
                 <p><strong>Definición:</strong> Conjunto de partes que funcionan relacionándose entre sí para conseguir un objetivo preciso.</p>
@@ -1021,6 +1141,18 @@ const topicsData = {
         {
             title: 'Tema 11: Reparación de Equipos',
             desc: 'Detección de averías, señales de aviso, fallos comunes e incompatibilidades de hardware.',
+            quiz: [
+                { q: '¿Qué es el POST?', opts: ['Power On Self Test (Auto-diagnóstico al encender)', 'Pre-Operating System Task', 'Primary Output System Test', 'Program Of System Testing'], correct: 0 },
+                { q: 'Si el ordenador se reinicia aleatoriamente, ¿cuál es una causa probable?', opts: ['Teclado desconectado', 'Sobrecalentamiento del procesador', 'Pila de la BIOS agotada', 'Ratón sucio'], correct: 1 },
+                { q: '¿Qué síntoma indica que la pila de la placa base (CR2032) está agotada?', opts: ['El ordenador no enciende', 'La fecha y hora se resetean al apagar', 'El disco duro hace ruido', 'La pantalla se ve en blanco y negro'], correct: 1 },
+                { q: '¿Qué herramienta física ayuda a diagnosticar errores de arranque mediante códigos?', opts: ['Tarjeta POST', 'Multímetro', 'Destornillador', 'Disco de arranque'], correct: 0 },
+                { q: '¿Qué ocurre si intentas poner un procesador Intel en una placa AMD?', opts: ['Funciona pero más lento', 'Se adapta automáticamente', 'Es físicamente incompatible (diferente socket)', 'Se quema la placa'], correct: 2 },
+                { q: '¿Qué indica generalmente un fallo si el ordenador enciende los ventiladores pero no muestra nada en pantalla?', opts: ['Fallo de disco duro', 'Fallo de CPU, RAM o Gráfica', 'Fallo de teclado', 'Fallo de ratón'], correct: 1 },
+                { q: '¿Qué significa que un disco duro haga ruidos mecánicos (clac-clac)?', opts: ['Que está leyendo datos', 'Que está escribiendo datos', 'Fallo físico grave', 'Que necesita desfragmentarse'], correct: 2 },
+                { q: '¿Qué componente suele ser el culpable si la hora del sistema se atrasa?', opts: ['El procesador', 'La RAM', 'La pila de la BIOS', 'El disco duro'], correct: 2 },
+                { q: '¿Qué herramienta de software permite ver voltajes y temperaturas sin cargar el SO?', opts: ['Word', 'BIOS/UEFI', 'Paint', 'Calculadora'], correct: 1 },
+                { q: '¿Qué tipo de señal de aviso son los "Beeps"?', opts: ['Visuales', 'Acústicas', 'Táctiles', 'Olfativas'], correct: 1 }
+            ],
             content: `
                 <h3>1. Detección de Averías</h3>
                 <h4>Tipos</h4>
@@ -1073,6 +1205,18 @@ const topicsData = {
         {
             title: 'Tema 12: Mantenimiento de Periféricos',
             desc: 'Limpieza y cuidado de monitor, teclado, ratón, impresora, escáner y otros periféricos.',
+            quiz: [
+                { q: '¿Cómo se debe limpiar la pantalla de un monitor LCD/TFT?', opts: ['Con limpiacristales común', 'Con un paño de microfibra ligeramente húmedo o producto específico', 'Con alcohol etílico puro', 'Con papel de cocina seco'], correct: 1 },
+                { q: '¿Qué precaución hay que tener al limpiar una impresora láser?', opts: ['No usar agua en el interior', 'Aspirar el tóner con aspirador especial (filtro HEPA)', 'No tocar el rodillo de transferencia', 'Todas las anteriores'], correct: 3 },
+                { q: '¿Cómo se debe limpiar un disco óptico (CD/DVD)?', opts: ['En movimientos circulares', 'Desde el centro hacia afuera (radial)', 'Frotando fuerte con lana', 'Con disolvente'], correct: 1 },
+                { q: '¿Qué es importante desbloquear en un escáner antes de usarlo?', opts: ['La tapa', 'El carro de la lámpara (candado)', 'El cable USB', 'El software'], correct: 1 },
+                { q: '¿Qué se debe usar para limpiar el polvo del interior de un teclado?', opts: ['Agua y jabón', 'Aire comprimido', 'Un trapo húmedo', 'Aceite'], correct: 1 },
+                { q: '¿Qué producto se recomienda para limpiar la lente de una unidad óptica?', opts: ['Agua del grifo', 'Alcohol isopropílico', 'Lejía', 'Acetona'], correct: 1 },
+                { q: '¿Qué parte del ratón de bola requería limpieza frecuente?', opts: ['Los botones', 'La bola y los rodillos internos', 'El cable', 'La rueda de scroll'], correct: 1 },
+                { q: '¿Qué se debe hacer con los cartuchos de inyección antes de instalarlos?', opts: ['Agitarlos fuertemente', 'Quitar los precintos', 'Calentarlos', 'Mojarlos'], correct: 1 },
+                { q: '¿Qué herramienta se usa para limpiar el polvo entre las teclas?', opts: ['Destornillador', 'Aire comprimido o brocha', 'Tijeras', 'Cuchillo'], correct: 1 },
+                { q: '¿Dónde NO se debe ubicar un ordenador?', opts: ['En una mesa', 'En el suelo (por el polvo)', 'En una oficina', 'En una habitación ventilada'], correct: 1 }
+            ],
             content: `
                 <h3>1. Mantenimiento Integral</h3>
                 <ul>
@@ -1131,6 +1275,18 @@ const topicsData = {
         {
             title: 'Tema 13: Instalación de Software',
             desc: 'Tipos de software, licencias, versiones y métodos de instalación.',
+            quiz: [
+                { q: '¿Qué libertad NO garantiza el Software Libre?', opts: ['Libertad de usar el programa', 'Libertad de modificar el código', 'Libertad de distribuirlo gratis siempre', 'Libertad de redistribuir copias'], correct: 2 },
+                { q: '¿Qué tipo de licencia liga el software a un hardware específico (ej. al comprar un PC)?', opts: ['Retail', 'OEM', 'GPL', 'Shareware'], correct: 1 },
+                { q: '¿Qué es el Shareware?', opts: ['Software totalmente gratuito', 'Software de prueba con limitaciones que requiere pago para versión completa', 'Software libre', 'Software ilegal'], correct: 1 },
+                { q: '¿Qué es una instalación desatendida?', opts: ['Una instalación que falla', 'Una instalación automática sin intervención del usuario', 'Una instalación remota', 'Una instalación rápida'], correct: 1 },
+                { q: '¿Qué tipo de software es un Sistema Operativo?', opts: ['Software de Aplicación', 'Software de Programación', 'Software de Base (Sistema)', 'Software Malicioso'], correct: 2 },
+                { q: '¿Qué tipo de licencia permite la integración con software propietario?', opts: ['GPL', 'LGPL', 'Freeware', 'Dominio Público'], correct: 1 },
+                { q: '¿Qué es el "Copyleft"?', opts: ['Derecho de copia', 'Garantía de que las versiones modificadas sigan siendo libres', 'Prohibición de copiar', 'Software pirata'], correct: 1 },
+                { q: '¿Qué tipo de software son los compiladores e IDEs?', opts: ['Software de Sistema', 'Software de Aplicación', 'Software de Programación', 'Software de Entretenimiento'], correct: 2 },
+                { q: '¿Qué es una actualización o "parche"?', opts: ['Un virus', 'Software que corrige errores o añade funciones', 'Un sistema operativo nuevo', 'Un juego'], correct: 1 },
+                { q: '¿Qué licencia es típica de Windows y prohíbe la copia?', opts: ['GPL', 'BSD', 'EULA', 'Creative Commons'], correct: 2 }
+            ],
             content: `
                 <h3>1. Tipos de Software</h3>
                 <ul>
@@ -1183,6 +1339,18 @@ const topicsData = {
         {
             title: 'Tema 14: Gestión de Discos',
             desc: 'Estructura de discos, particiones, sistemas de archivos, herramientas y operaciones de gestión.',
+            quiz: [
+                { q: '¿Qué contiene el MBR (Master Boot Record)?', opts: ['Mis Documentos', 'La tabla de particiones y el código de arranque', 'El sistema operativo completo', 'La BIOS'], correct: 1 },
+                { q: '¿Cuántas particiones primarias admite como máximo un disco MBR?', opts: ['2', '3', '4', '128'], correct: 2 },
+                { q: '¿Qué sistema de archivos permite archivos de más de 4GB y tiene journaling?', opts: ['FAT32', 'FAT16', 'NTFS', 'ExFAT'], correct: 2 },
+                { q: '¿Qué nivel de RAID utiliza "Mirroring" (Espejo) para redundancia de datos?', opts: ['RAID 0', 'RAID 1', 'RAID 5', 'JBOD'], correct: 1 },
+                { q: '¿Qué hace un formateo a bajo nivel?', opts: ['Borra solo el índice de archivos', 'Instala el sistema operativo', 'Borra físicamente todo el disco dejándolo de fábrica', 'Crea particiones'], correct: 2 },
+                { q: '¿Qué es un Clúster?', opts: ['Un sector', 'Una pista', 'Una agrupación de varios sectores', 'Un cilindro'], correct: 2 },
+                { q: '¿Qué tipo de partición es necesaria para arrancar el sistema operativo?', opts: ['Partición Extendida', 'Partición Lógica', 'Partición Primaria (Activa)', 'Cualquiera'], correct: 2 },
+                { q: '¿Qué sistema de archivos es típico de Linux?', opts: ['NTFS', 'FAT32', 'ext4', 'HFS'], correct: 2 },
+                { q: '¿Qué herramienta gráfica de Linux se menciona para gestionar particiones?', opts: ['Partition Magic', 'GParted', 'FDISK', 'Disk Management'], correct: 1 },
+                { q: '¿Qué es un volumen distribuido en discos dinámicos?', opts: ['Un disco espejo', 'Suma el espacio de varios discos para verlo como uno solo', 'Un disco rápido', 'Un disco de seguridad'], correct: 1 }
+            ],
             content: `
                 <h3>1. Estructura del Disco Duro</h3>
                 
@@ -1503,6 +1671,17 @@ window.openTopicModal = function (subject, index) {
 
     document.getElementById('topicModalTitle').textContent = topic.title;
     document.getElementById('topicModalContent').innerHTML = topic.content;
+
+    // Inyectar botón de quiz si existe
+    if (topic.quiz && topic.quiz.length > 0) {
+        const btn = `<div style="text-align:center;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--card-border)">
+            <button class="quiz-start-btn" onclick="startQuiz('${subject}',${index})">
+                <i class="fa-solid fa-clipboard-question"></i> Hacer Test
+            </button>
+        </div>`;
+        document.getElementById('topicModalContent').innerHTML += btn;
+    }
+
     document.getElementById('topicModalOverlay').classList.add('active');
 }
 

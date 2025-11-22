@@ -253,6 +253,355 @@ const topicsData = {
                     <li><strong>SLI (NVIDIA) / Crossfire (AMD):</strong> Permiten conectar dos o más tarjetas gráficas trabajando en paralelo para aumentar el rendimiento.</li>
                 </ul>
             `
+        },
+        {
+            title: 'Tema 3: Componentes del Ordenador',
+            desc: 'Caja, fuente de alimentación, CPU, refrigeración, RAM, almacenamiento y tarjetas de expansión.',
+            content: `
+                <h3>1. La Caja del Ordenador (Chasis)</h3>
+                <p>La caja no es solo un contenedor; su diseño afecta el rendimiento térmico y la expansión del equipo.</p>
+                <p><strong>Materiales:</strong> Generalmente tienen chasis de aluminio (ligero), aunque se usa acero, plástico o metacrilato (especialmente en modding).</p>
+                
+                <h4>Factor de Forma y Bahías</h4>
+                <ul>
+                    <li><strong>Microtorre:</strong> Para placas Micro ATX. Mide 25-32 cm y tiene de 1 a 3 bahías externas.</li>
+                    <li><strong>Semitorre:</strong> El estándar más habitual (37-45 cm). Admite hasta 6 bahías externas.</li>
+                    <li><strong>Gran Torre:</strong> Usada en servidores y modding. Altura de 55-72 cm y 8 o más bahías. Prioriza la ventilación.</li>
+                    <li><strong>Slim:</strong> Diseño compacto (horizontal o vertical) para placas Micro o Flex ATX.</li>
+                    <li><strong>Barebones:</strong> Cajas tipo "Mini" que ya incluyen placa base y fuente de alimentación preinstaladas.</li>
+                </ul>
+
+                <h3>2. La Fuente de Alimentación</h3>
+                <p>Es el dispositivo que convierte la Corriente Alterna (220 V) en Corriente Continua (5 a 12 V).</p>
+                
+                <h4>Fases de transformación</h4>
+                <ul>
+                    <li><strong>Transformador:</strong> Baja la tensión de 220 V a 5-12 V.</li>
+                    <li><strong>Rectificador:</strong> Pasa de alterna a continua.</li>
+                    <li><strong>Filtro:</strong> Elimina oscilaciones.</li>
+                    <li><strong>Regulador:</strong> Estabiliza la salida frente a cambios de consumo.</li>
+                </ul>
+
+                <h4>Estándar ATX (Actual)</h4>
+                <p>Divide el funcionamiento en una parte principal y una auxiliar (siempre encendida), permitiendo el encendido por software.</p>
+                
+                <h4>Conectores clave</h4>
+                <ul>
+                    <li><strong>ATX 20/24 pines:</strong> Alimenta la placa base.</li>
+                    <li><strong>ATX 12V:</strong> Alimentación exclusiva del procesador.</li>
+                    <li><strong>Molex 4 pines:</strong> Para discos duros antiguos (IDE) y ventiladores.</li>
+                    <li><strong>SATA:</strong> Conector plano de alimentación para discos modernos.</li>
+                    <li><strong>PCI Express:</strong> Alimentación extra para tarjetas gráficas potentes.</li>
+                    <li><strong>Berg 4p:</strong> Específico para disqueteras.</li>
+                </ul>
+
+                <h3>3. El Microprocesador (CPU)</h3>
+                <p>El cerebro del ordenador. Su potencia no depende solo de la frecuencia, sino de su arquitectura.</p>
+                
+                <h4>Arquitecturas de instrucciones</h4>
+                <ul>
+                    <li><strong>CISC (Complex Instruction Set):</strong> Muchas instrucciones complejas. Requieren varios ciclos de reloj para ejecutarse. Difícil decodificación.</li>
+                    <li><strong>RISC (Reduced Instruction Set):</strong> Instrucciones simples y muy rápidas (un ciclo de reloj). Circuitería más sencilla y eficiente.</li>
+                    <li><strong>Actualidad:</strong> La mayoría son híbridos o usan tecnologías como EPIC (paralelismo explícito).</li>
+                </ul>
+
+                <h4>Características clave</h4>
+                <ul>
+                    <li><strong>Longitud de palabra:</strong> Cantidad máxima de bits (16, 32 o 64) que maneja en un acceso a memoria.</li>
+                    <li><strong>Nivel de integración:</strong> Menor espacio entre componentes = mayor velocidad y menor consumo.</li>
+                    <li><strong>Núcleos:</strong> Siempre aparecen en número par (2, 4, 6, etc.) y trabajan cooperativamente.</li>
+                </ul>
+
+                <h3>4. Sistema de Refrigeración</h3>
+                <p>Esencial para evitar daños por calor.</p>
+                
+                <h4>Refrigeración Pasiva (Sin partes móviles)</h4>
+                <ul>
+                    <li><strong>Disipador:</strong> Bloque de metal (cobre/aluminio) con aletas para maximizar el contacto con el aire.</li>
+                    <li><strong>Pasta Térmica:</strong> Compuesto viscoso (basado en silicona, plata o cobre) que elimina el aire entre el procesador y el disipador para mejorar la conducción.</li>
+                </ul>
+
+                <h4>Refrigeración Activa (Mecánica)</h4>
+                <ul>
+                    <li><strong>Ventilador:</strong> Cuanto mayor es su diámetro, menos revoluciones necesita para mover el mismo aire, generando menos ruido.</li>
+                    <li><strong>Refrigeración Líquida:</strong> Usa una bomba (mueve el líquido), radiador (enfría el líquido con ventiladores) y tubos. El líquido suele ser agua destilada con anticongelante.</li>
+                    <li><strong>Refrigeración Iónica:</strong> Tecnología avanzada que ioniza partículas de aire para crear flujo sin partes móviles.</li>
+                </ul>
+
+                <h3>5. La Memoria RAM</h3>
+                <p>Almacén temporal de datos. Se clasifica por su tecnología y formato físico.</p>
+                <p><strong>Fórmula de Rendimiento:</strong> Tasa de transferencia (MB/s) = Frecuencia efectiva (MHz) × Ancho de bus (bytes)</p>
+                <p><em>Nota: El ancho de bus en memorias modernas suele ser 64 bits (8 Bytes).</em></p>
+
+                <h4>Evolución de módulos DDR (Double Data Rate)</h4>
+                <ul>
+                    <li><strong>SDR (Single Data Rate):</strong> 1 dato por ciclo. 168 contactos, 2 muescas, 3.3 V.</li>
+                    <li><strong>DDR:</strong> 2 datos por ciclo. 184 contactos, 1 muesca, 2.5 V.</li>
+                    <li><strong>DDR2:</strong> 4 datos por ciclo. 240 contactos, 1 muesca, 1.8 V.</li>
+                    <li><strong>DDR3:</strong> 8 datos por ciclo. 240 contactos (muesca en distinta posición que DDR2), 1.5 V.</li>
+                </ul>
+
+                <h4>Otros tipos</h4>
+                <ul>
+                    <li><strong>ECC (Error Correcting Code):</strong> Detectan y corrigen errores de datos. Son más lentas y usadas en servidores.</li>
+                    <li><strong>SO-DIMM:</strong> Versión reducida para portátiles (aprox. la mitad de tamaño que un DIMM).</li>
+                </ul>
+
+                <h3>6. Dispositivos de Almacenamiento</h3>
+                
+                <h4>Discos Duros Magnéticos (HDD)</h4>
+                <p><strong>Estructura lógica:</strong></p>
+                <ul>
+                    <li><strong>Pistas:</strong> Círculos concéntricos en el plato.</li>
+                    <li><strong>Cilindros:</strong> El conjunto vertical de pistas en varios platos.</li>
+                    <li><strong>Sectores:</strong> División de la pista (512 bytes). Es la unidad mínima.</li>
+                    <li><strong>Clúster:</strong> Grupo de sectores.</li>
+                </ul>
+
+                <h4>Dispositivos Ópticos (CD/DVD/BluRay)</h4>
+                <ul>
+                    <li>A diferencia del HDD, la información se graba en una espiral continua (no círculos concéntricos).</li>
+                    <li>Físicamente son hoyos (pits) y valles (lands) que reflejan el láser de forma distinta.</li>
+                    <li><strong>BluRay:</strong> Almacena desde 25 GB por capa (hasta 20 capas teóricas).</li>
+                </ul>
+
+                <h4>Estado Sólido (SSD)</h4>
+                <p>Basados en memoria Flash NAND no volátil.</p>
+                <p><strong>Ventajas:</strong> Sin ruido, menor consumo, resistentes a golpes y mucho más rápidos que los HDD.</p>
+
+                <h3>7. Tarjetas de Expansión</h3>
+                
+                <h4>Tarjeta Gráfica</h4>
+                <p>Tiene su propio procesador (GPU) y memoria (VRAM). La VRAM puede ser dedicada (propia de la tarjeta) o compartida (usa la RAM del sistema).</p>
+
+                <h4>Tarjeta de Red (NIC)</h4>
+                <ul>
+                    <li><strong>Identificador único físico:</strong> Dirección MAC (48 bits).</li>
+                    <li><strong>Conector estándar:</strong> RJ-45 (Ethernet).</li>
+                </ul>
+
+                <h4>Tarjeta de Sonido</h4>
+                <p><strong>Función principal:</strong> Conversor Analógico-Digital (ADC) y Digital-Analógico (DAC) para procesar audio.</p>
+            `
+        },
+        {
+            title: 'Tema 4: Puertos y Conectores',
+            desc: 'Tipos de conectores, puertos serie/paralelo, USB, Firewire, vídeo, audio, red, inalámbricos y alimentación.',
+            content: `
+                <h3>1. Conceptos Básicos de Conexión</h3>
+                <p>Los ordenadores utilizan "puertos" (en la placa o tarjetas) y "conectores" (en los cables) para interconectar dispositivos.</p>
+                
+                <ul>
+                    <li><strong>Pines y Contactos:</strong> La conexión física se realiza mediante pines (patillas metálicas) y contactos.</li>
+                    <li><strong>Género:</strong>
+                        <ul>
+                            <li><strong>Macho (M):</strong> Tiene pines que se insertan.</li>
+                            <li><strong>Hembra (F):</strong> Tiene orificios para recibir los pines. Generalmente, los puertos del equipo son hembra.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Adaptadores y Hubs:</strong> Los adaptadores transforman un tipo de conector en otro, mientras que los Hubs (adaptadores múltiples) ofrecen varios conectores desde una sola salida.</li>
+                </ul>
+
+                <h3>2. Tipos de Conectores Generales</h3>
+                <ul>
+                    <li><strong>DIN y Mini-DIN:</strong> Estándares alemanes. El DIN tiene 13,2 mm de diámetro y el Mini-DIN (más común en PC antiguos) tiene 9,5 mm.</li>
+                    <li><strong>D-sub (D-subminiature):</strong> Conectores con borde metálico en forma de "D" que protege los pines organizados en filas (ej. puerto serie o VGA).</li>
+                    <li><strong>RCA:</strong> Conector circular de 8,5 mm usado para audio y vídeo, codificado por colores.</li>
+                    <li><strong>Jack:</strong> Usado para audio analógico. Tamaños: 2,5 mm (mini), 3,5 mm (estándar PC) y 6,35 mm (profesional).</li>
+                </ul>
+
+                <h3>3. Puertos Serie y Paralelo (Legacy)</h3>
+                <ul>
+                    <li><strong>PS/2 (Mini-DIN 6):</strong> Puerto para teclado (violeta) y ratón (verde). Está en desuso frente al USB.</li>
+                    <li><strong>Puerto Serie (COM):</strong> Conector DE-9M (macho de 9 pines). Transmite datos bit a bit. Usado hoy para configurar routers o consolas.</li>
+                    <li><strong>Puerto Paralelo (LPT):</strong> Conector DB-25F (hembra de 25 pines). Transmite 1 byte simultáneamente. Usado antiguamente para impresoras.</li>
+                </ul>
+
+                <h3>4. El Puerto USB (Universal Serial Bus)</h3>
+                <p>Sistema estándar "Plug-and-Play" y conexión en caliente ("hot-swap").</p>
+                <p><strong>Características:</strong> 4 pines (Datos, alimentación 5V, masa). Permite conectar hasta 127 dispositivos en cadena.</p>
+                
+                <h4>Versiones</h4>
+                <ul>
+                    <li><strong>1.0:</strong> Baja velocidad (1,5 - 12 Mbps).</li>
+                    <li><strong>2.0:</strong> Alta velocidad (480 Mbps).</li>
+                    <li><strong>3.0:</strong> Super velocidad (4,8 Gbps), suele ser de color azul.</li>
+                </ul>
+
+                <h4>Tipos físicos</h4>
+                <p>USB-A (PC), USB-B (periféricos), Mini-USB y Micro-USB (dispositivos pequeños como móviles).</p>
+
+                <h3>5. El Puerto Firewire (IEEE 1394)</h3>
+                <p>Estándar de alta velocidad para multimedia (videocámaras). Alimenta dispositivos hasta 25V.</p>
+                
+                <h4>Tipos</h4>
+                <ul>
+                    <li><strong>S400:</strong> 4 o 6 pines (400 Mbps).</li>
+                    <li><strong>S800:</strong> 9 pines (786 Mbps).</li>
+                    <li><strong>S1600/S3200:</strong> Hasta 3,2 Gbps.</li>
+                </ul>
+
+                <h3>6. Puertos de Vídeo</h3>
+                <ul>
+                    <li><strong>VGA (Video Graphics Array):</strong> Estándar analógico. Conector DE-15F (15 pines en 3 filas), color azul.</li>
+                    <li><strong>DVI (Digital Video Interface):</strong> Transmite vídeo digital.
+                        <ul>
+                            <li><strong>DVI-D:</strong> Solo digital.</li>
+                            <li><strong>DVI-A:</strong> Solo analógico.</li>
+                            <li><strong>DVI-I:</strong> Integrado (ambos).</li>
+                        </ul>
+                    </li>
+                    <li><strong>HDMI:</strong> Interfaz multimedia de alta definición (audio + vídeo). 19 pines. Es el sustituto del euroconector.</li>
+                    <li><strong>S-Video:</strong> Mini-DIN de 4 o 7 pines. Mejor calidad que el RCA compuesto.</li>
+                </ul>
+
+                <h3>7. Puertos de Audio</h3>
+                <h4>Jack 3.5 mm (Código de colores estándar)</h4>
+                <ul>
+                    <li><strong>Verde:</strong> Salida estéreo (Altavoces/Auriculares).</li>
+                    <li><strong>Azul:</strong> Entrada de línea.</li>
+                    <li><strong>Rosa:</strong> Micrófono.</li>
+                    <li><strong>Colores extra (Naranja, Negro, Gris):</strong> Para sonido envolvente 5.1/7.1.</li>
+                </ul>
+
+                <h4>Otros conectores de audio</h4>
+                <ul>
+                    <li><strong>S/PDIF:</strong> Salida de audio digital, usa conector RCA naranja (coaxial) o fibra óptica.</li>
+                    <li><strong>MIDI:</strong> Interfaz digital para instrumentos musicales. Conector DIN-5.</li>
+                </ul>
+
+                <h3>8. Puertos de Comunicaciones (Red)</h3>
+                <ul>
+                    <li><strong>RJ-11 / RJ-12 (6P):</strong> Usados en telefonía. Tienen 6 posiciones pero usan 2 o 4 contactos.</li>
+                    <li><strong>RJ-45 (8P8C):</strong> Estándar para redes Ethernet. Tiene 8 pines.</li>
+                    <li><strong>Fibra Óptica:</strong> Transmisión por pulsos de luz. Conectores comunes: ST, SC, LC y FC.</li>
+                </ul>
+
+                <h3>9. Puertos Inalámbricos</h3>
+                <ul>
+                    <li><strong>WiFi (IEEE 802.11):</strong> Requiere antena. Estándares b/g/n.</li>
+                    <li><strong>Bluetooth:</strong> Radiofrecuencia 2.4 GHz para corto alcance (PAN). Versiones 1.x, 2.0, 3.0.</li>
+                    <li><strong>ZigBee (IEEE 802.15.4):</strong> Bajo consumo, usado en domótica y sensores. Topología en malla.</li>
+                    <li><strong>Infrarrojos (IrDA):</strong> En desuso, requiere línea de visión directa.</li>
+                </ul>
+
+                <h3>10. Conectores de Alimentación (Internos)</h3>
+                <p>Conectan la fuente de alimentación a la placa y componentes.</p>
+                <ul>
+                    <li><strong>ATX Principal:</strong> 20 o 24 pines.</li>
+                    <li><strong>ATX 12V / EPS:</strong> 4 u 8 pines para alimentar el procesador.</li>
+                    <li><strong>PEG (PCIe):</strong> 6 u 8 pines para alimentar tarjetas gráficas potentes.</li>
+                    <li><strong>Molex 4p:</strong> Para unidades antiguas y ventiladores.</li>
+                </ul>
+
+                <h3>11. Conectores de Disco Duro</h3>
+                <ul>
+                    <li><strong>IDE (PATA):</strong> Cable plano ancho.
+                        <ul>
+                            <li>40 pines: Sobremesa.</li>
+                            <li>44 pines: Portátiles (lleva alimentación incluida).</li>
+                        </ul>
+                    </li>
+                    <li><strong>SATA:</strong> Conector en forma de "L" de 7 pines. Estándar actual.</li>
+                    <li><strong>SCSI:</strong> Usado antiguamente en servidores.</li>
+                </ul>
+            `
+        },
+        {
+            title: 'Tema 5: Periféricos de Entrada',
+            desc: 'Teclado, ratón, escáner, tableta digitalizadora, webcam/netcam y micrófono.',
+            content: `
+                <h3>1. Concepto General de Periférico de Entrada</h3>
+                <p>Un periférico de entrada es el dispositivo encargado de digitalizar el mundo exterior. Su función es transformar información física (pulsaciones, luz, sonido, movimiento) en señales eléctricas codificadas (código binario) que el ordenador puede procesar.</p>
+                
+                <h4>Composición interna</h4>
+                <p>Todo periférico tiene dos partes:</p>
+                <ul>
+                    <li><strong>Elementos mecánicos:</strong> Piezas móviles como motores o electroimanes.</li>
+                    <li><strong>Elementos electrónicos (Controlador):</strong> Interpretan las órdenes del procesador y gestionan los datos captados.</li>
+                </ul>
+
+                <h3>2. El Teclado (Keyboard)</h3>
+                <p>Es el dispositivo principal para la introducción de datos. Su funcionamiento varía según si es de sobremesa o portátil.</p>
+                
+                <h4>Mecanismo de funcionamiento</h4>
+                <ul>
+                    <li><strong>Sobremesa:</strong> Funciona mediante una alfombrilla de elastómero. Al pulsar una tecla, un botón de goma se hunde y conecta dos láminas de circuito separadas, cerrando el contacto eléctrico.</li>
+                    <li><strong>Portátil:</strong> Para ahorrar espacio, usa una sola lámina de circuito y la tecla tiene una silicona conductora incorporada.</li>
+                </ul>
+
+                <h4>Distribución</h4>
+                <p>La más común es QWERTY (basada en máquinas de escribir), aunque existen variantes geográficas (como la tecla Ñ en español) o funcionales (teclados multimedia).</p>
+
+                <h4>Tipos de teclas</h4>
+                <p>Se dividen en Alfanuméricas (letras/números), Numéricas (calculadora), de Función (F1-F12), de Movimiento (flechas) y Especiales (Esc, Impr Pant).</p>
+
+                <h3>3. El Ratón (Mouse)</h3>
+                <p>Dispositivo apuntador que traduce movimiento físico en coordenadas (X, Y) en la pantalla.</p>
+                
+                <h4>Evolución Tecnológica</h4>
+                <ul>
+                    <li><strong>Mecánico (Bola):</strong> Usaba una bola de goma que movía rodillos internos. Requería limpieza frecuente y alfombrilla.</li>
+                    <li><strong>Óptico:</strong> Es el estándar actual. Utiliza un sensor óptico (una pequeña cámara) que toma miles de fotografías por segundo de la superficie. Un procesador interno compara las imágenes para calcular el movimiento. No funciona bien en cristal o espejos.</li>
+                </ul>
+
+                <h4>Variantes para Portátiles</h4>
+                <ul>
+                    <li><strong>Touchpad:</strong> Superficie táctil que detecta el dedo mediante efecto de plasma eléctrico.</li>
+                    <li><strong>Trackpoint:</strong> Pequeño pivote rugoso entre las teclas (G, H, B) típico de IBM/Lenovo, sensible a la presión.</li>
+                </ul>
+
+                <h4>Otras variantes</h4>
+                <ul>
+                    <li><strong>Trackball:</strong> La bola está arriba y se mueve con el dedo (ideal para diseño o falta de espacio).</li>
+                    <li><strong>Lápiz Óptico/Interactivo:</strong> Interactúa directamente sobre la pantalla detectando el refresco de los píxeles.</li>
+                </ul>
+
+                <h3>4. El Escáner</h3>
+                <p>Digitaliza documentos impresos. La calidad se mide en ppp o dpi (píxeles por pulgada); a mayor número, mayor detalle.</p>
+                
+                <h4>Funcionamiento</h4>
+                <p>Una fuente de luz (láser) ilumina el documento línea por línea. La luz reflejada es captada por sensores optoelectrónicos que la convierten en carga eléctrica, generando un mapa de bits.</p>
+
+                <h4>Tecnologías de Reconocimiento</h4>
+                <ul>
+                    <li><strong>OCR (Optical Character Recognition):</strong> Convierte la imagen de un texto en texto editable (Word, TXT).</li>
+                    <li><strong>OMR (Optical Mark Recognition):</strong> Detecta marcas oscuras en casillas predefinidas. Se usa para corregir exámenes tipo test o loterías.</li>
+                    <li><strong>Código de Barras:</strong> Lee el grosor y espaciado de líneas paralelas para identificar productos.</li>
+                </ul>
+
+                <h3>5. Tableta Digitalizadora</h3>
+                <p>Herramienta clave para diseño gráfico y CAD. Permite dibujar con precisión de "lápiz y papel".</p>
+                
+                <h4>Tipos según el estilete (lápiz)</h4>
+                <ul>
+                    <li><strong>Pasivas:</strong> Usan una malla de hilos en la tableta que detecta la señal electromagnética del lápiz. El lápiz no lleva pilas.</li>
+                    <li><strong>Activas:</strong> El lápiz lleva batería/pila y emite su propia señal.</li>
+                </ul>
+
+                <h4>Capacidades</h4>
+                <p>Detectan no solo la posición, sino también la presión ejercida y la inclinación del lápiz.</p>
+
+                <h3>6. Webcam y Netcam</h3>
+                
+                <h4>Webcam</h4>
+                <p>Cámara conectada por USB. La calidad de vídeo depende de los FPS (Frames por Segundo). A mayor resolución, suele bajar la velocidad de FPS si la cámara no es potente. Usan sensores CMOS.</p>
+
+                <h4>Netcam (Cámara IP)</h4>
+                <p>No necesita un PC encendido. Es un dispositivo de red autónomo (tiene su propia IP) que se conecta al Router (Ethernet o WiFi). Se usa para videovigilancia remota, puede tener visión nocturna y enviar alertas por email.</p>
+
+                <h3>7. El Micrófono</h3>
+                <p>Transductor que convierte ondas sonoras en señales eléctricas.</p>
+                
+                <h4>Conexión</h4>
+                <ul>
+                    <li><strong>Estándar doméstico:</strong> Jack 3.5 mm de color Rosa.</li>
+                    <li><strong>Profesional:</strong> Jack 6.3 mm o XLR.</li>
+                </ul>
+
+                <h4>Integración</h4>
+                <p>En portátiles modernos suele estar oculto en el marco de la pantalla, eliminando la necesidad de conectar uno externo.</p>
+            `
         }
     ],
     'ISO': [
@@ -484,111 +833,4 @@ searchInput.addEventListener('input', (e) => {
 
 // Start
 init();
-
-// ============================================
-// AI INTEGRATION - Gemini API
-// ============================================
-
-let currentTopicContent = ''; // Almacena el contenido actual del tema
-
-// Actualizar la función openTopicModal para guardar el contenido
-window.openTopicModal = function (subject, index) {
-    const topic = topicsData[subject][index];
-    if (!topic || !topic.content) return;
-
-    document.getElementById('topicModalTitle').textContent = topic.title;
-    document.getElementById('topicModalContent').innerHTML = topic.content;
-    document.getElementById('topicModalOverlay').classList.add('active');
-
-    // Guardar el contenido para las funciones de IA
-    currentTopicContent = topic.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
-
-    // Limpiar resultado anterior
-    document.getElementById('resultado-ia').innerHTML = '';
-}
-
-// Función principal para pedir a la IA
-window.pedirIA = async function (tipoSolicitud) {
-    const divResultado = document.getElementById('resultado-ia');
-    const botones = document.querySelectorAll('.ai-btn');
-
-    if (!currentTopicContent) {
-        divResultado.innerHTML = '<p style="color: #ef4444;">⚠️ No hay contenido cargado</p>';
-        return;
-    }
-
-    // Deshabilitar botones mientras procesa
-    botones.forEach(btn => btn.disabled = true);
-
-    divResultado.innerHTML = '<div class="ai-loading">🧠 Pensando</div>';
-    divResultado.style.display = 'block';
-
-    try {
-        // Llamar a nuestra API serverless en Vercel
-        const respuesta = await fetch('/api/generar', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contenido: currentTopicContent,
-                tipo: tipoSolicitud
-            })
-        });
-
-        if (!respuesta.ok) {
-            throw new Error(`Error ${respuesta.status}: ${respuesta.statusText}`);
-        }
-
-        const datos = await respuesta.json();
-
-        if (datos.error) {
-            throw new Error(datos.error);
-        }
-
-        // Renderizar según el tipo
-        if (tipoSolicitud === 'mapa') {
-            renderizarMapaMermaid(datos.resultado);
-        } else {
-            divResultado.innerHTML = datos.resultado;
-        }
-
-    } catch (error) {
-        console.error('Error:', error);
-        divResultado.innerHTML = `
-            <div style="color: #ef4444; padding: 1rem; background: rgba(239, 68, 68, 0.1); border-radius: 6px;">
-                <strong>❌ Error:</strong> ${error.message}<br>
-                <small style="color: #94a3b8; margin-top: 0.5rem; display: block;">
-                    ${error.message.includes('404') || error.message.includes('Failed to fetch')
-                ? 'La API aún no está configurada. Sigue las instrucciones del README para configurar Vercel y la API de Gemini.'
-                : 'Verifica tu conexión a internet y que la API Key esté configurada correctamente en Vercel.'}
-                </small>
-            </div>
-        `;
-    } finally {
-        // Rehabilitar botones
-        botones.forEach(btn => btn.disabled = false);
-    }
-}
-
-// Función para renderizar diagramas Mermaid
-function renderizarMapaMermaid(codigoMermaid) {
-    const divResultado = document.getElementById('resultado-ia');
-
-    // Limpiar código (quitar markdown si viene con ```mermaid)
-    let codigo = codigoMermaid.replace(/```mermaid\n?/g, '').replace(/```\n?/g, '').trim();
-
-    // Crear contenedor para el diagrama
-    const contenedorMermaid = document.createElement('div');
-    contenedorMermaid.className = 'mermaid';
-    contenedorMermaid.textContent = codigo;
-
-    divResultado.innerHTML = '';
-    divResultado.appendChild(contenedorMermaid);
-
-    // Renderizar el diagrama
-    if (window.mermaid) {
-        window.mermaid.run({
-            querySelector: '.mermaid'
-        });
-    }
-}
 

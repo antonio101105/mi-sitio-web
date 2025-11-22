@@ -10,11 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-        window.mermaid = mermaid;
-    </script>
 </head>
 
 <body>
@@ -37,13 +32,14 @@
         <p>Todo el material para 1º y 2º de ASIR en un solo lugar.</p>
 
         <div class="year-selector">
-            <button class="year-btn active" data-year="1">1º Curso</button>
-            <button class="year-btn" data-year="2">2º Curso</button>
+            <button class="year-btn active" data-year="1" aria-label="Seleccionar 1º Curso">1º Curso</button>
+            <button class="year-btn" data-year="2" aria-label="Seleccionar 2º Curso">2º Curso</button>
         </div>
 
         <div class="search-container">
             <i class="fa-solid fa-search search-icon"></i>
-            <input type="text" id="searchInput" placeholder="Buscar por título o descripción...">
+            <input type="text" id="searchInput" placeholder="Buscar por título o descripción..."
+                aria-label="Buscar recursos">
         </div>
 
         <div class="filters" id="filterContainer">
@@ -70,34 +66,10 @@
             <div class="modal-content" id="topicModalContent">
                 <!-- Content injected by JS -->
             </div>
-
-            <!-- AI Tools Section -->
-            <div class="ai-tools">
-                <h3>🤖 Herramientas IA</h3>
-                <div class="ai-buttons">
-                    <button class="ai-btn" onclick="pedirIA('resumen')">
-                        <i class="fa-solid fa-file-lines"></i> Resumen
-                    </button>
-                    <button class="ai-btn" onclick="pedirIA('test')">
-                        <i class="fa-solid fa-clipboard-question"></i> Test
-                    </button>
-                    <button class="ai-btn" onclick="pedirIA('mapa')">
-                        <i class="fa-solid fa-diagram-project"></i> Mapa Mental
-                    </button>
-                    <button class="ai-btn" onclick="pedirIA('explicacion')">
-                        <i class="fa-solid fa-lightbulb"></i> Explicación
-                    </button>
-                </div>
-                <div id="resultado-ia" class="ai-result"></div>
-            </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 ASIR_hub. Hecho con <i class="fa-solid fa-heart"></i> para la comunidad.</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

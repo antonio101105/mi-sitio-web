@@ -18,8 +18,8 @@ export default async function handler(req) {
         // 2. Obtener datos del frontend
         const { contenido, tipo } = await req.json();
 
-        // 3. Obtener la clave de Vercel (Aquí es donde busca la Key "GEMINI_API_KEY")
-        const apiKey = process.env.GEMINI_API_KEY;
+        // 3. Obtener la clave de Vercel (Aquí es donde busca la Key "GEMINI_API")
+        const apiKey = process.env.GEMINI_API;
 
         if (!apiKey) {
             return new Response(JSON.stringify({ error: 'Falta la API Key en Vercel' }), { status: 500 });

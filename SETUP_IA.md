@@ -35,19 +35,6 @@
 2. **Conecta con Vercel:**
    - Ve a [vercel.com](https://vercel.com) y haz login con GitHub
    - Haz clic en "Add New Project"
-   - Selecciona tu repositorio `ASIR_hub`
-   - Haz clic en "Import"
-
-3. **Configura la variable de entorno:**
-   - En la página de configuración del proyecto, ve a "Environment Variables"
-   - Añade una nueva variable:
-     - **Name:** `GEMINI_API_KEY`
-     - **Value:** Tu API Key que copiaste en el Paso 1
-   - Haz clic en "Add"
-
-4. **Despliega:**
-   - Haz clic en "Deploy"
-   - Espera 1-2 minutos
    - ¡Tu web estará en `https://tu-proyecto.vercel.app`!
 
 ### Opción B: Desde la CLI de Vercel
@@ -60,7 +47,7 @@ npm i -g vercel
 vercel
 
 # Configurar la variable de entorno
-vercel env add GEMINI_API_KEY
+vercel env add GEMINI_API
 # Pega tu API Key cuando te lo pida
 
 # Redesplegar con la nueva configuración
@@ -99,7 +86,7 @@ Vercel detectará automáticamente los cambios y actualizará tu web en ~1 minut
 ## 🐛 Solución de problemas
 
 ### Error: "API Key no configurada"
-- Verifica que añadiste `GEMINI_API_KEY` en las variables de entorno de Vercel
+- Verifica que añadiste `GEMINI_API` en las variables de entorno de Vercel
 - Asegúrate de redesplegar después de añadir la variable
 
 ### Error: "Failed to fetch"

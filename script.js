@@ -2530,6 +2530,15 @@ const initialResources = [
         url: "#",
         description: "Guía paso a paso para desplegar una app PHP.",
         icon: "fa-brands fa-php"
+    },
+    {
+        id: 7,
+        title: "Introducción a XML",
+        year: 1,
+        subject: "LMSGI",
+        url: "#",
+        description: "Conceptos básicos de lenguajes de marcas.",
+        icon: "fa-solid fa-code"
     }
 ];
 

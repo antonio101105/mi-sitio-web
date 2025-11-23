@@ -28,6 +28,9 @@
         <a href="/" class="logo" style="text-decoration: none; color: inherit; cursor: pointer;">
             <i class="fa-solid fa-network-wired"></i> ASIR_hub
         </a>
+        <button class="btn-primary" id="dashboardBtn">
+            <i class="fa-solid fa-chart-line"></i> Mi Progreso
+        </button>
     </nav>
 
     <header class="hero">
@@ -47,6 +50,11 @@
 
         <div class="filters" id="filterContainer">
             <!-- Filtros inyectados por JavaScript -->
+        </div>
+
+        <div id="favoritesContainer" class="favorites-container" style="display: none;">
+            <h3><i class="fa-solid fa-heart" style="color: var(--accent-color);"></i> Mis Favoritos</h3>
+            <div class="resource-grid" id="favoritesGrid"></div>
         </div>
     </header>
 
@@ -68,6 +76,49 @@
             </div>
             <div class="modal-content" id="topicModalContent">
                 <!-- Contenido inyectado por JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Dashboard -->
+    <div class="modal-overlay" id="dashboardModalOverlay">
+        <div class="modal dashboard-modal">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-user-astronaut"></i> Mi Panel de Control</h2>
+                <button class="close-modal" id="closeDashboardBtn"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-content" id="dashboardContent">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-check-double"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="statCompleted">0</span>
+                            <span class="stat-label">Tests Completados</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-star"></i>
+                        <div class="stat-info">
+                            <span class="stat-value" id="statAvg">0%</span>
+                            <span class="stat-label">Nota Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Progreso por Asignatura</h3>
+                <div id="subjectProgressContainer"></div>
+
+                <div class="global-exam-section">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Modo Examen Global</h3>
+                    <p>Ponte a prueba con preguntas aleatorias de todos los temas.</p>
+                    <select id="globalExamSubject" class="search-filter" style="width: 100%; margin-bottom: 1rem;">
+                        <!-- Opciones inyectadas por JS -->
+                    </select>
+                    <button class="btn-primary" style="width: 100%; justify-content: center;"
+                        onclick="startGlobalExam()">
+                        Comenzar Simulacro
+                    </button>
+                </div>
             </div>
         </div>
     </div>

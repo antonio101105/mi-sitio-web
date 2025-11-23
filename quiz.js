@@ -56,6 +56,20 @@ window.submitQuiz = function () {
     let grade = pct >= 90 ? 'Sobresaliente' : pct >= 70 ? 'Notable' : pct >= 50 ? 'Aprobado' : 'Suspenso';
     let icon = pct >= 90 ? 'trophy' : pct >= 70 ? 'medal' : pct >= 50 ? 'thumbs-up' : 'thumbs-down';
 
+    // Guardar resultado
+    const quizResults = JSON.parse(localStorage.getItem('asir_quiz_results')) || {};
+    const quizId = `${quizState.subject}_${quizState.index}`;
+    quizResults[quizId] = {
+        score: pct,
+        date: new Date().toISOString()
+    };
+    localStorage.setItem('asir_quiz_results', JSON.stringify(quizResults));
+
+    // Actualizar dashboard si existe la función
+    if (typeof updateDashboardStats === 'function') {
+        updateDashboardStats();
+    }
+
     const result = `<div class="quiz-result ${pct >= 50 ? 'pass' : 'fail'}">
         <h3><i class="fa-solid fa-${icon}"></i> Resultado</h3>
         <p class="quiz-score">Acertaste <strong>${correct}</strong> de <strong>${topic.quiz.length}</strong></p>

@@ -2548,6 +2548,7 @@ let resources = [...initialResources];
 let currentYear = 1;
 let currentSubject = 'all';
 let currentSearch = '';
+let favorites = JSON.parse(localStorage.getItem('asir_favorites')) || [];
 
 // Elementos del DOM
 const resourceGrid = document.getElementById('resourceGrid');
@@ -2558,9 +2559,11 @@ const topicsContainer = document.getElementById('topicsContainer');
 
 // Inicialización de la aplicación
 function init() {
+    loadState();
     renderSubjectFilters();
     renderTopics();
     renderResources();
+    updateDashboardStats();
 }
 
 // Renderizar filtros de asignaturas
@@ -2579,9 +2582,18 @@ function renderSubjectFilters() {
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             currentSubject = btn.dataset.subject;
-            renderSubjectFilters(); // Re-renderizar para actualizar el estado activo
-            renderTopics(); // Renderizar temas de la asignatura seleccionada
-            renderResources();
+            if (document.startViewTransition) {
+                document.startViewTransition(() => {
+                    renderSubjectFilters();
+                    renderTopics();
+                    renderResources();
+                });
+            } else {
+                renderSubjectFilters();
+                renderTopics();
+                renderResources();
+            }
+            saveState();
         });
     });
 }
@@ -2629,7 +2641,10 @@ function renderTopics() {
 
 // Renderizar recursos (tarjetas de contenido)
 function renderResources() {
-    resourceGrid.innerHTML = '';
+    const grid = document.getElementById('resourceGrid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
 
     let filtered = resources.filter(r => r.year === currentYear);
 
@@ -2645,29 +2660,37 @@ function renderResources() {
         );
     }
 
+
+
     if (filtered.length === 0) {
-        resourceGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No se encontraron recursos para esta selección.</p>';
-        return;
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-secondary);">No se encontraron recursos para esta selección.</p>';
+    } else {
+        filtered.forEach(resource => {
+            const isFav = favorites.includes(resource.id);
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <button class="fav-btn ${isFav ? 'active' : ''}" onclick="toggleFavorite(${resource.id}, this)">
+                    <i class="fa-${isFav ? 'solid' : 'regular'} fa-heart"></i>
+                </button>
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="${resource.icon || 'fa-solid fa-link'}"></i>
+                    </div>
+                    <span class="card-category">${resource.subject}</span>
+                </div>
+                <h3>${resource.title}</h3>
+                <p>${resource.description}</p>
+                <a href="${resource.url}" target="_blank" class="card-link">
+                    Ver Recurso <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            `;
+            grid.appendChild(card);
+        });
     }
 
-    filtered.forEach(resource => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-            <div class="card-header">
-                <div class="card-icon">
-                    <i class="${resource.icon || 'fa-solid fa-link'}"></i>
-                </div>
-                <span class="card-category">${resource.subject}</span>
-            </div>
-            <h3>${resource.title}</h3>
-            <p>${resource.description}</p>
-            <a href="${resource.url}" target="_blank" class="card-link">
-                Ver Recurso <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        `;
-        resourceGrid.appendChild(card);
-    });
+    // Renderizar favoritos si estamos en la vista principal
+    renderFavorites();
 }
 
 // Lógica del modal de temas
@@ -2717,16 +2740,193 @@ yearBtns.forEach(btn => {
         currentYear = parseInt(btn.dataset.year);
         currentSubject = 'all'; // Resetear asignatura al cambiar de curso
 
-        renderSubjectFilters();
-        renderTopics(); // Limpiar temas al cambiar de curso
-        renderResources();
+        if (document.startViewTransition) {
+            document.startViewTransition(() => {
+                renderSubjectFilters();
+                renderTopics();
+                renderResources();
+            });
+        } else {
+            renderSubjectFilters();
+            renderTopics();
+            renderResources();
+        }
+        saveState();
     });
 });
 
 searchInput.addEventListener('input', (e) => {
     currentSearch = e.target.value;
-    renderResources();
+    if (document.startViewTransition) {
+        document.startViewTransition(() => renderResources());
+    } else {
+        renderResources();
+    }
 });
+
+
+
+// Dashboard Logic
+const dashboardBtn = document.getElementById('dashboardBtn');
+const dashboardModalOverlay = document.getElementById('dashboardModalOverlay');
+const closeDashboardBtn = document.getElementById('closeDashboardBtn');
+
+if (dashboardBtn) {
+    dashboardBtn.addEventListener('click', () => {
+        updateDashboardStats();
+        dashboardModalOverlay.classList.add('active');
+    });
+}
+
+if (closeDashboardBtn) {
+    closeDashboardBtn.addEventListener('click', () => {
+        dashboardModalOverlay.classList.remove('active');
+    });
+}
+
+if (dashboardModalOverlay) {
+    dashboardModalOverlay.addEventListener('click', (e) => {
+        if (e.target === dashboardModalOverlay) {
+            dashboardModalOverlay.classList.remove('active');
+        }
+    });
+}
+
+// Funciones de Persistencia y Lógica Avanzada
+function saveState() {
+    localStorage.setItem('asir_year', currentYear);
+    localStorage.setItem('asir_subject', currentSubject);
+}
+
+function loadState() {
+    const savedYear = localStorage.getItem('asir_year');
+    const savedSubject = localStorage.getItem('asir_subject');
+
+    if (savedYear) currentYear = parseInt(savedYear);
+    if (savedSubject) currentSubject = savedSubject;
+
+    // Actualizar UI de botones de año
+    yearBtns.forEach(btn => {
+        if (parseInt(btn.dataset.year) === currentYear) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+window.toggleFavorite = function (id, btn) {
+    const index = favorites.indexOf(id);
+    if (index === -1) {
+        favorites.push(id);
+        btn.classList.add('active');
+        btn.querySelector('i').classList.replace('fa-regular', 'fa-solid');
+    } else {
+        favorites.splice(index, 1);
+        btn.classList.remove('active');
+        btn.querySelector('i').classList.replace('fa-solid', 'fa-regular');
+    }
+    localStorage.setItem('asir_favorites', JSON.stringify(favorites));
+    renderFavorites();
+}
+
+function renderFavorites() {
+    const favGrid = document.getElementById('favoritesGrid');
+    const favContainer = document.getElementById('favoritesContainer');
+
+    if (!favGrid || !favContainer) return;
+
+    const favResources = resources.filter(r => favorites.includes(r.id));
+
+    if (favResources.length === 0) {
+        favContainer.style.display = 'none';
+        return;
+    }
+
+    favContainer.style.display = 'block';
+    favGrid.innerHTML = '';
+
+    favResources.forEach(resource => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <button class="fav-btn active" onclick="toggleFavorite(${resource.id}, this)">
+                <i class="fa-solid fa-heart"></i>
+            </button>
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="${resource.icon || 'fa-solid fa-link'}"></i>
+                </div>
+                <span class="card-category">${resource.subject}</span>
+            </div>
+            <h3>${resource.title}</h3>
+            <p>${resource.description}</p>
+            <a href="${resource.url}" target="_blank" class="card-link">
+                Ver Recurso <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        `;
+        favGrid.appendChild(card);
+    });
+}
+
+function updateDashboardStats() {
+    // Calcular estadísticas reales basadas en localStorage de quizzes (asumiendo que quiz.js guarda ahí)
+    // Por ahora simulamos o leemos si existiera
+    const quizResults = JSON.parse(localStorage.getItem('asir_quiz_results')) || {};
+    let totalQuizzes = 0;
+    let totalScore = 0;
+    let count = 0;
+
+    // Generar lista de asignaturas para el select del examen global
+    const globalExamSelect = document.getElementById('globalExamSubject');
+    if (globalExamSelect) {
+        globalExamSelect.innerHTML = '<option value="all">Todas las asignaturas</option>';
+        subjects[currentYear].forEach(sub => {
+            globalExamSelect.innerHTML += `<option value="${sub}">${sub}</option>`;
+        });
+    }
+
+    // Calcular stats
+    Object.values(quizResults).forEach(res => {
+        totalQuizzes++;
+        totalScore += parseFloat(res.score);
+        count++;
+    });
+
+    const avg = count > 0 ? (totalScore / count).toFixed(1) : 0;
+
+    document.getElementById('statCompleted').textContent = totalQuizzes;
+    document.getElementById('statAvg').textContent = avg + '%';
+
+    // Renderizar progreso por asignatura
+    const progressContainer = document.getElementById('subjectProgressContainer');
+    if (progressContainer) {
+        progressContainer.innerHTML = '';
+        subjects[currentYear].forEach(sub => {
+            // Simulación de progreso aleatorio para demo visual si no hay datos reales suficientes
+            // En producción, esto se calcularía con los datos reales
+            const subProgress = Math.floor(Math.random() * 100);
+
+            progressContainer.innerHTML += `
+                <div class="progress-bar-container">
+                    <div class="progress-info">
+                        <span>${sub}</span>
+                        <span>${subProgress}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${subProgress}%"></div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+}
+
+window.startGlobalExam = function () {
+    const subject = document.getElementById('globalExamSubject').value;
+    alert('Iniciando examen global de: ' + subject + '. (Funcionalidad en desarrollo: generará un test aleatorio de 20 preguntas)');
+    // Aquí iría la lógica para recopilar preguntas de todos los temas y lanzar el modal de quiz
+}
 
 // Iniciar la aplicación
 init();

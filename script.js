@@ -27,6 +27,31 @@ const subjects = {
     2: ['ASO', 'ASGBD', 'SAD', 'PROY', 'OPT', 'IPE2', 'IAW', 'HLC', 'ING', 'SRI']
 };
 
+// Configuración de Firebase (Reemplaza con tus propias claves)
+const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "tu-proyecto.firebaseapp.com",
+    projectId: "tu-proyecto",
+    storageBucket: "tu-proyecto.appspot.com",
+    messagingSenderId: "TU_SENDER_ID",
+    appId: "TU_APP_ID"
+};
+
+// Inicializar Firebase
+try {
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    console.log("Firebase initialized successfully");
+} catch (error) {
+    console.error("Error initializing Firebase:", error);
+    alert("Error: No se pudo conectar con Firebase. Revisa la configuración en script.js");
+}
+
+// Hacer auth y db accesibles globalmente si se inicializaron
+const auth = firebase.apps.length ? firebase.auth() : null;
+const db = firebase.apps.length ? firebase.firestore() : null;
+
 const topicsData = {
     'FH': [
         {
@@ -2565,6 +2590,7 @@ function init() {
     renderTopics();
     renderResources();
     updateDashboardStats();
+    initAuth();
 }
 
 // Renderizar filtros de asignaturas
@@ -2947,6 +2973,93 @@ window.startGlobalExam = function () {
     const subject = document.getElementById('globalExamSubject').value;
     alert('Iniciando examen global de: ' + subject + '. (Funcionalidad en desarrollo: generará un test aleatorio de 20 preguntas)');
     // Aquí iría la lógica para recopilar preguntas de todos los temas y lanzar el modal de quiz
+}
+
+// Lógica de Autenticación
+function initAuth() {
+    const modal = document.getElementById('auth-modal');
+    const triggerBtn = document.getElementById('floating-trigger');
+    const closeBtn = document.getElementById('closeAuthModal');
+
+    // Abrir/Cerrar Modal
+    if (triggerBtn) {
+        triggerBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.add('active'), 10);
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        });
+    }
+
+    // Google Login
+    document.getElementById('btn-google')?.addEventListener('click', () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider)
+            .then((result) => handleAuthSuccess(result.user))
+            .catch((error) => alert('Error: ' + error.message));
+    });
+
+    // GitHub Login
+    document.getElementById('btn-github')?.addEventListener('click', () => {
+        const provider = new firebase.auth.GithubAuthProvider();
+        auth.signInWithPopup(provider)
+            .then((result) => handleAuthSuccess(result.user))
+            .catch((error) => alert('Error: ' + error.message));
+    });
+
+    // Email Login
+    document.getElementById('btn-email-login')?.addEventListener('click', () => {
+        const email = document.getElementById('auth-email').value;
+        const pass = document.getElementById('auth-password').value;
+        auth.signInWithEmailAndPassword(email, pass)
+            .then((userCredential) => handleAuthSuccess(userCredential.user))
+            .catch((error) => alert('Error: ' + error.message));
+    });
+
+    // Email Register
+    document.getElementById('btn-email-register')?.addEventListener('click', () => {
+        const email = document.getElementById('auth-email').value;
+        const pass = document.getElementById('auth-password').value;
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then((userCredential) => handleAuthSuccess(userCredential.user))
+            .catch((error) => alert('Error: ' + error.message));
+    });
+
+    // Monitor Auth State
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            handleAuthSuccess(user, false);
+        }
+    });
+}
+
+function handleAuthSuccess(user, showWelcome = true) {
+    const modal = document.getElementById('auth-modal');
+    const triggerBtn = document.getElementById('floating-trigger');
+
+    // Cerrar modal y ocultar botón flotante
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+    if (triggerBtn) triggerBtn.style.display = 'none';
+
+    // Guardar usuario en Firestore
+    db.collection('usuarios').doc(user.uid).set({
+        email: user.email,
+        lastLogin: new Date(),
+        photoURL: user.photoURL || '',
+        displayName: user.displayName || ''
+    }, { merge: true });
+
+    if (showWelcome) {
+        alert(`¡Bienvenido, ${user.displayName || user.email}!`);
+    }
 }
 
 // Iniciar la aplicación

@@ -135,13 +135,57 @@
                 style="color: #e879f9;"></i> para la comunidad de informáticos</p>
     </footer>
 
+    <!-- Botón Flotante para Auth -->
+    <button id="floating-trigger" class="floating-btn">
+        <i class="fa-solid fa-user"></i>
+    </button>
+
+    <!-- Modal de Autenticación -->
+    <div id="auth-modal" class="modal-overlay hidden">
+        <div class="modal auth-modal">
+            <div class="modal-header">
+                <h2>Iniciar Sesión</h2>
+                <button class="close-modal" id="closeAuthModal"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-content auth-content">
+                <div class="auth-buttons">
+                    <button id="btn-google" class="btn-auth btn-google">
+                        <i class="fa-brands fa-google"></i> Acceder con Google
+                    </button>
+                    <button id="btn-github" class="btn-auth btn-github">
+                        <i class="fa-brands fa-github"></i> Acceder con GitHub
+                    </button>
+                </div>
+
+                <div class="auth-separator">
+                    <span>o</span>
+                </div>
+
+                <form id="email-auth-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="auth-email">Email</label>
+                        <input type="email" id="auth-email" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="auth-password">Contraseña</label>
+                        <input type="password" id="auth-password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="btn-email-login" class="btn-primary">Login</button>
+                        <button type="button" id="btn-email-register" class="btn-secondary">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js" defer></script>
     <script src="quiz.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
-    <script src="script.js"></script>
+
 </body>
 
 </html>

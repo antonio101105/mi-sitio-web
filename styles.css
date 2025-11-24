@@ -799,6 +799,31 @@ body {
 
 /* Global Exam Section */
 
+/* Dashboard Details & Summary */
+details>summary {
+    list-style: none;
+    transition: all 0.3s ease;
+}
+
+details>summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open]>summary {
+    background: rgba(167, 139, 250, 0.1) !important;
+    color: #fff !important;
+}
+
+details[open]>summary i {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+details>summary:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #fff !important;
+}
+
 /* Auth Modal & Floating Button */
 .hidden {
     display: none !important;
@@ -1009,11 +1034,6 @@ footer a:hover {
         padding: 1.5rem;
         width: 95%;
     }
-}
-
-@media (max-width: 480px) {
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
 }
 
 .auth-content {
@@ -1334,6 +1354,184 @@ footer a:hover {
 /* Number Input Specific */
 input[type="number"].input-seguimiento {
     -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type="number"].input-seguimiento::-webkit-outer-spin-button,
+input[type="number"].input-seguimiento::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Select Specific */
+select.input-seguimiento {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a78bfa' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    padding-right: 2rem;
+}
+
+select.input-seguimiento option {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Responsive para Dashboard */
+@media (max-width: 768px) {
+    .asignaturas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.8rem;
+    }
+
+    .asignatura-card {
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .hero {
+        padding-top: 3rem;
+    }
+
+    .year-selector {
+        width: 100%;
+        display: flex;
+    }
+
+    .year-btn {
+        flex: 1;
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* ========== ESTILOS PARA DASHBOARD DE USUARIO ========== */
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.dashboard-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+/* Auth Sections Toggle */
+.auth-section {
+    width: 100%;
+}
+
+.auth-section.hidden {
+    display: none !important;
+}
+
+/* Curso Section */
+.curso-section {
+    margin-bottom: 2.5rem;
+}
+
+.curso-section h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+/* Asignaturas Grid */
+.asignaturas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Asignatura Card */
+.asignatura-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.asignatura-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.15);
+}
+
+.asignatura-card h4 {
+    margin: 0 0 1rem 0;
+    color: var(--accent-secondary);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 0.5rem;
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 0.8rem;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+}
+
+/* Input Seguimiento Styles */
+.input-seguimiento {
+    width: 100%;
+    padding: 0.6rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+}
+
+.input-seguimiento:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+}
+
+.input-seguimiento:hover {
+    border-color: var(--accent-secondary);
+}
+
+/* Number Input Specific */
+input[type="number"].input-seguimiento {
+    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 input[type="number"].input-seguimiento::-webkit-outer-spin-button,
@@ -1390,4 +1588,45 @@ select.input-seguimiento option {
     .asignatura-card h4 {
         font-size: 1rem;
     }
+}
+
+/* Dashboard Accordion & List Styles */
+.tema-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+}
+
+.tema-item:last-child {
+    border-bottom: none;
+}
+
+.tema-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tema-nombre {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.tema-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.tema-nota {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.tema-fecha {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
 }

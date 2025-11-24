@@ -39,19 +39,17 @@ const firebaseConfig = {
 };
 
 // Inicializar Firebase
+let auth;
+let db;
 try {
     firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    auth = firebase.auth();
+    db = firebase.firestore();
     console.log("Firebase initialized successfully");
 } catch (error) {
     console.error("Error initializing Firebase:", error);
     alert("Error: No se pudo conectar con Firebase. Revisa la configuración en script.js");
 }
-
-// Hacer auth y db accesibles globalmente si se inicializaron
-const auth = firebase.apps.length ? firebase.auth() : null;
-const db = firebase.apps.length ? firebase.firestore() : null;
 
 const topicsData = {
     'FH': [
@@ -3093,21 +3091,23 @@ function handleAuthSuccess(user, showWelcome = true) {
 
     // Cargar progreso del usuario después del login
     cargarProgresoUsuario(user.uid);
+    actualizarDashboardVisual(user.uid);
 }
 
 // ========== FUNCIONES DE SEGUIMIENTO ACADÉMICO ==========
 
 /**
- * Guarda un dato de una asignatura en Firestore
- * @param {string} idAsignatura - Código de la asignatura (ej: 'GBD', 'PAR')
- * @param {string} tipoDato - Tipo de dato ('nota' o 'estado')
- * @param {any} valor - Valor a guardar
+ * Guarda la nota de un tema específico en el historial de la asignatura
+ * @param {string} asignatura - Código de la asignatura (ej: 'GBD')
+ * @param {number} indiceTema - Índice del tema (0, 1, 2...)
+ * @param {string} nombreTema - Título del tema
+ * @param {number} nota - Nota numérica sobre 10
  */
-function guardarDatoAsignatura(idAsignatura, tipoDato, valor) {
+function guardarNotaTema(asignatura, indiceTema, nombreTema, nota) {
     const user = auth.currentUser;
 
     if (!user) {
-        console.warn('No hay usuario logueado. No se puede guardar el progreso.');
+        console.warn('No hay usuario logueado. No se puede guardar.');
         return;
     }
 
@@ -3118,30 +3118,37 @@ function guardarDatoAsignatura(idAsignatura, tipoDato, valor) {
 
     const userRef = db.collection('usuarios').doc(user.uid);
 
-    // Preparamos los datos usando sintaxis de objeto anidado
-    // Usamos { merge: true } para que NO borre lo que ya existía,
-    // sino que mezcle los datos nuevos con los viejos.
-    const datosAGuardar = {
-        progreso: {
-            [idAsignatura]: {
-                [tipoDato]: valor
-            }
-        }
+    // Estructura: progreso.[ASIGNATURA].temas.[INDICE]
+    // Usamos notación de punto para actualizar campos anidados sin borrar el resto
+    const campoUpdate = `progreso.${asignatura}.temas.${indiceTema}`;
+
+    const datosTema = {
+        nota: parseFloat(nota),
+        nombre: nombreTema,
+        fecha: new Date().toISOString() // Guardamos fecha como string ISO
     };
 
-    userRef.set(datosAGuardar, { merge: true })
+    // Creamos el objeto de actualización dinámica
+    const updateObject = {};
+    updateObject[campoUpdate] = datosTema;
+
+    // Usamos set con merge: true para asegurar que se crea la estructura si no existe
+    userRef.set(updateObject, { merge: true })
         .then(() => {
-            console.log(`✓ Guardado correctamente: ${idAsignatura} > ${tipoDato} = ${valor}`);
-            // Opcional: Mostrar feedback visual sin alert molesto
+            console.log(`✓ Nota guardada: ${asignatura} - Tema ${indiceTema} (${nombreTema}): ${nota}`);
+            // Actualizar dashboard visualmente al instante
+            actualizarDashboardVisual(user.uid);
         })
         .catch((error) => {
-            console.error('Error REAL de Firebase:', error);
-            alert('Error al guardar: ' + error.message);
+            console.error('Error al guardar nota del tema:', error);
+            alert('Error al guardar la nota: ' + error.message);
         });
 }
 
 // Exponer la función globalmente para que quiz.js pueda usarla
-window.guardarDatoAsignatura = guardarDatoAsignatura;
+window.guardarNotaTema = guardarNotaTema;
+// Mantenemos compatibilidad por si acaso, aunque quiz.js usará la nueva
+window.guardarProgreso = guardarNotaTema;
 
 
 /**
@@ -3157,7 +3164,7 @@ function cargarProgresoUsuario(uid) {
     // Primero, inicializar TODAS las notas a "0" por defecto
     const todosLosInputsNota = document.querySelectorAll('.input-seguimiento[data-tipo="nota"]');
     todosLosInputsNota.forEach(input => {
-        input.value = '0';
+        input.value = '-';
     });
 
     db.collection('usuarios').doc(uid).get()
@@ -3197,6 +3204,164 @@ function cargarProgresoUsuario(uid) {
 }
 
 /**
+ * Actualiza visualmente el Dashboard con datos reales de Firestore
+ * @param {string} uid - ID del usuario (opcional si ya está logueado)
+ */
+/**
+ * Actualiza visualmente el Dashboard con datos reales de Firestore (Modo Avanzado)
+ * Calcula la media de los temas y muestra el historial detallado.
+ * @param {string} uid - ID del usuario (opcional si ya está logueado)
+ */
+// Función para renderizar el Dashboard con la nueva estructura de Temas
+async function actualizarDashboardVisual(uid) {
+    console.log("%c --- INICIANDO ACTUALIZACIÓN DASHBOARD (V. DIAGNÓSTICO) ---", "color: orange; font-weight: bold;");
+
+    // 1. Verificar contenedor
+    const container = document.getElementById('subjectProgressContainer');
+    if (!container) {
+        console.error("⛔ ERROR CRÍTICO: No existe el div con id='subjectProgressContainer' en el HTML.");
+        alert("Error: Falta el contenedor 'subjectProgressContainer' en el HTML.");
+        return;
+    } else {
+        console.log("✅ Contenedor encontrado en el DOM.");
+    }
+
+    const userRef = db.collection('usuarios').doc(uid);
+
+    try {
+        const doc = await userRef.get();
+        if (!doc.exists) {
+            console.warn("⚠️ El usuario no tiene documento en la base de datos.");
+            container.innerHTML = "<p>Perfil nuevo. Realiza un test para ver datos.</p>";
+            return;
+        }
+
+        const data = doc.data();
+        console.log("📦 Datos recibidos de Firebase:", data);
+
+        const progreso = data.progreso;
+        if (!progreso) {
+            console.warn("⚠️ El usuario existe pero no tiene el campo 'progreso'.");
+            container.innerHTML = "<p>Aún no has guardado ninguna nota. Completa un test para comenzar.</p>";
+            return;
+        }
+
+        // Limpieza inicial
+        container.innerHTML = '';
+        let totalTests = 0;
+        let sumaTotal = 0;
+        let htmlBuilder = '';
+
+        // Recorrer asignaturas
+        const asignaturas = Object.keys(progreso);
+        console.log("📚 Asignaturas encontradas:", asignaturas);
+
+        if (asignaturas.length === 0) {
+            container.innerHTML = "<p>Carpeta de progreso vacía. Completa un test para comenzar.</p>";
+            return;
+        }
+
+        let asignaturasConDatos = 0;
+
+        asignaturas.forEach(asig => {
+            const datosAsig = progreso[asig];
+
+            // Verificación de estructura
+            if (!datosAsig || typeof datosAsig !== 'object') {
+                console.log(`⚠️ La asignatura ${asig} no tiene datos válidos.`);
+                return;
+            }
+
+            if (!datosAsig.temas) {
+                console.log(`ℹ️ La asignatura ${asig} no tiene el campo 'temas'.`);
+                return;
+            }
+
+            // Verificar si temas es un objeto vacío
+            const temasKeys = Object.keys(datosAsig.temas);
+            if (temasKeys.length === 0) {
+                console.log(`ℹ️ La asignatura ${asig} tiene 'temas' vacío (aún no hay tests completados).`);
+                return;
+            }
+
+            const temas = Object.values(datosAsig.temas); // Convertir objeto temas a array
+            const nTemas = temas.length;
+
+            if (nTemas === 0) return;
+
+            console.log(`✅ Calculando ${asig}: ${nTemas} temas encontrados.`);
+            asignaturasConDatos++;
+
+            // Calcular media
+            let sumaAsig = 0;
+            let listaTemasHTML = '';
+
+            temas.forEach(t => {
+                const nota = parseFloat(t.nota || 0);
+                sumaAsig += nota;
+                // Crear HTML de cada tema
+                listaTemasHTML += `
+                    <li style="padding: 8px; border-bottom: 1px solid #444; display: flex; justify-content: space-between;">
+                        <span>${t.nombre || 'Tema'}</span>
+                        <span style="color: ${nota >= 5 ? '#50fa7b' : '#ff5555'}">${nota.toFixed(2)}</span>
+                    </li>
+                `;
+            });
+
+            const media = (sumaAsig / nTemas).toFixed(2);
+            totalTests += nTemas;
+            sumaTotal += sumaAsig;
+
+            // Construir tarjeta
+            htmlBuilder += `
+                <div style="background: rgba(255,255,255,0.05); margin-bottom: 15px; padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                        <h4 style="margin:0; color:#bd93f9;">${asig}</h4>
+                        <span style="font-weight:bold; color:${media >= 5 ? '#50fa7b' : '#ff5555'}">${media}</span>
+                    </div>
+                    <div style="width:100%; height:6px; background:#444; border-radius:3px; margin-bottom:10px;">
+                        <div style="width:${Math.min(media * 10, 100)}%; height:100%; background:${media >= 5 ? '#50fa7b' : '#ff5555'}; border-radius:3px;"></div>
+                    </div>
+                    <details>
+                        <summary style="cursor:pointer; color:#ccc; font-size:0.8rem;">Ver ${nTemas} temas</summary>
+                        <ul style="list-style:none; padding:0; margin-top:5px; background:rgba(0,0,0,0.2); border-radius:4px;">
+                            ${listaTemasHTML}
+                        </ul>
+                    </details>
+                </div>
+            `;
+        });
+
+        if (htmlBuilder === '') {
+            container.innerHTML = "<p style='color: #f1fa8c;'>📝 Aún no has completado ningún test. ¡Empieza ahora para ver tu progreso!</p>";
+            console.log("ℹ️ No hay temas completados para mostrar.");
+        } else {
+            container.innerHTML = htmlBuilder;
+            console.log(`✅ Dashboard renderizado con ${asignaturasConDatos} asignaturas.`);
+        }
+
+        // Actualizar estadísticas superiores
+        const statC = document.getElementById('statCompleted');
+        const statA = document.getElementById('statAvg');
+        if (statC) statC.textContent = totalTests;
+        if (statA) statA.textContent = totalTests > 0 ? (sumaTotal / totalTests).toFixed(2) : "0.00";
+
+        console.log(`📊 Estadísticas: ${totalTests} tests completados, media: ${totalTests > 0 ? (sumaTotal / totalTests).toFixed(2) : "0.00"}`);
+
+    } catch (e) {
+        console.error("🔥 Error renderizando:", e);
+        container.innerHTML = `<p style="color:red">Error cargando datos: ${e.message}</p>`;
+        alert(`Error al cargar el dashboard: ${e.message}`);
+    }
+}
+
+// Aseguramos que sea global
+window.updateDashboardStats = function () {
+    const user = firebase.auth().currentUser;
+    if (user) actualizarDashboardVisual(user.uid);
+};
+
+/**
  * Inicializa los event listeners para los inputs de seguimiento
  * Se ejecuta cuando el DOM está listo
  */
@@ -3210,12 +3375,14 @@ function inicializarSeguimientoAcademico() {
             const tipoDato = this.dataset.tipo;
             const valor = this.value;
 
-            // SOLO guardar si es un cambio de ESTADO (no de nota)
-            // Las notas vienen automáticamente de los quizzes
+            // BLOQUEO DE SEGURIDAD:
+            // Si intentan cambiar la nota manualmente (incluso quitando el readonly desde inspeccionar elemento),
+            // el script debe ignorarlo y NO guardar nada en la base de datos.
+            if (tipoDato === 'nota') return;
+
+            // Si es 'estado' u otro campo, procedemos normal...
             if (asignatura && tipoDato === 'estado') {
                 guardarDatoAsignatura(asignatura, tipoDato, valor);
-            } else if (tipoDato === 'nota') {
-                console.log('ℹ️ Las notas se actualizan automáticamente al completar tests');
             } else if (!asignatura || !tipoDato) {
                 console.warn('Input sin data-asignatura o data-tipo:', this);
             }

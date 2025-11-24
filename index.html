@@ -180,198 +180,220 @@
                         <i class="fa-solid fa-graduation-cap"></i> Mi Expediente Académico
                     </h2>
 
-                    <option value="aprobado">Aprobado</option>
-                    <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-network-wired"></i> PAR</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="PAR" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="PAR" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-database"></i> GBD</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="GBD" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="GBD" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-code"></i> LMSGI</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="LMSGI" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="LMSGI" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-microchip"></i> FH</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="FH" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="FH" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-briefcase"></i> FOL</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="FOL" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="FOL" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <!-- PAR -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-network-wired"></i> PAR</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="PAR" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="PAR" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
 
-    <div class="curso-section">
-        <h3><i class="fa-solid fa-book-open"></i> 2º Curso</h3>
-        <div class="asignaturas-grid">
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-terminal"></i> ASO</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="ASO" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="ASO" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-ethernet"></i> SRI</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="SRI" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="SRI" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-brands fa-html5"></i> IAW</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="IAW" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="IAW" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-table"></i> ASGBD</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="ASGBD" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="ASGBD" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-shield-halved"></i> SAD</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="SAD" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="SAD" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
-                </div>
-            </div>
-            <div class="asignatura-card">
-                <h4><i class="fa-solid fa-handshake"></i> EIE</h4>
-                <div class="input-group">
-                    <label>Nota:</label>
-                    <input type="number" class="input-seguimiento" data-asignatura="EIE" data-tipo="nota" min="0"
-                        max="10" step="0.1" placeholder="0-10">
-                </div>
-                <div class="input-group">
-                    <label>Estado:</label>
-                    <select class="input-seguimiento" data-asignatura="EIE" data-tipo="estado">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="aprobado">Aprobado</option>
-                        <option value="suspenso">Suspenso</option>
-                    </select>
+                    <!-- GBD -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-database"></i> GBD</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="GBD" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="GBD" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- LMSGI -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-code"></i> LMSGI</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="LMSGI" data-tipo="nota"
+                                readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="LMSGI" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- FH -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-microchip"></i> FH</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="FH" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="FH" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- FOL -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-briefcase"></i> FOL</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="FOL" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="FOL" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ASO -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-server"></i> ASO</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="ASO" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="ASO" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SRI -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-ethernet"></i> SRI</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="SRI" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="SRI" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- IAW -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-brands fa-html5"></i> IAW</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="IAW" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="IAW" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- ASGBD -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-table"></i> ASGBD</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="ASGBD" data-tipo="nota"
+                                readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="ASGBD" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- SAD -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-shield-halved"></i> SAD</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="SAD" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="SAD" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- EIE -->
+                    <div class="asignatura-card">
+                        <h4><i class="fa-solid fa-handshake"></i> EIE</h4>
+                        <div class="input-group">
+                            <label>Nota:</label>
+                            <input type="text" class="input-seguimiento" data-asignatura="EIE" data-tipo="nota" readonly
+                                style="cursor: not-allowed; background-color: rgba(0,0,0,0.5); color: #bd93f9; font-weight: bold;"
+                                placeholder="-">
+                        </div>
+                        <div class="input-group">
+                            <label>Estado:</label>
+                            <select class="input-seguimiento" data-asignatura="EIE" data-tipo="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="aprobado">Aprobado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>

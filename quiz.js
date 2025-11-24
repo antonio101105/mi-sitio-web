@@ -54,26 +54,34 @@ window.submitQuiz = function () {
 
     const pct = ((correct / topic.quiz.length) * 100).toFixed(1);
 
-    // --- INTEGRACIÓN CON FIREBASE ---
-    if (typeof window.guardarDatoAsignatura === 'function') {
-        // Convertimos % a nota sobre 10
-        const notaSobre10 = (parseFloat(pct) / 10).toFixed(2);
-        const estadoFinal = parseFloat(notaSobre10) >= 5 ? 'aprobado' : 'suspenso';
+    // --- INICIO CÓDIGO INYECTADO: GUARDADO POR TEMAS ---
+    try {
+        // 1. Calcular nota sobre 10
+        let notaDecimal = (correct / topic.quiz.length) * 10;
+        let notaFinal = Math.round(notaDecimal * 100) / 100;
 
-        console.log(`📝 Guardando nota automática para ${quizState.subject}: ${notaSobre10}/10 (${pct}%)`);
+        console.log("Intentando guardar nota del tema:", quizState.subject, topic.title, notaFinal);
 
-        // Guardamos nota y estado
-        window.guardarDatoAsignatura(quizState.subject, 'nota', notaSobre10);
-        window.guardarDatoAsignatura(quizState.subject, 'estado', estadoFinal);
-    } else {
-        console.warn('⚠️ La función guardarDatoAsignatura no está disponible');
+        // 2. Enviar a Firebase usando la NUEVA función global
+        if (window.guardarNotaTema) {
+            window.guardarNotaTema(
+                quizState.subject,
+                quizState.index,
+                topic.title,
+                notaFinal
+            );
+        } else {
+            console.error("ERROR CRÍTICO: No se encontró window.guardarNotaTema");
+        }
+    } catch (err) {
+        console.error("Error al guardar nota del tema:", err);
     }
-    // -------------------------------
+    // --- FIN CÓDIGO INYECTADO ---
 
     let grade = pct >= 90 ? 'Sobresaliente' : pct >= 70 ? 'Notable' : pct >= 50 ? 'Aprobado' : 'Suspenso';
     let icon = pct >= 90 ? 'trophy' : pct >= 70 ? 'medal' : pct >= 50 ? 'thumbs-up' : 'thumbs-down';
 
-    // Guardar resultado
+    // Guardar resultado localmente
     const quizResults = JSON.parse(localStorage.getItem('asir_quiz_results')) || {};
     const quizId = `${quizState.subject}_${quizState.index}`;
     quizResults[quizId] = {

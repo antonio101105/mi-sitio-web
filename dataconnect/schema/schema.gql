@@ -1,0 +1,55 @@
+type User @table {
+  displayName: String!
+  userType: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type Module @table {
+  name: String!
+  description: String!
+  createdAt: Timestamp!
+  order: Int
+}
+
+type Unit @table {
+  module: Module!
+  name: String!
+  description: String!
+  createdAt: Timestamp!
+  learningObjectives: String
+  materials: String
+  order: Int
+}
+
+type Task @table {
+  unit: Unit!
+  instructor: User!
+  title: String!
+  description: String!
+  dueDate: Timestamp!
+  createdAt: Timestamp!
+  maxPoints: Int
+  attachmentUrls: [String]
+}
+
+type Submission @table {
+  student: User!
+  task: Task!
+  submittedAt: Timestamp!
+  status: String!
+  submissionContent: String
+  uploadedFileUrls: [String]
+  grade: Int
+  feedback: String
+}
+
+type Progress @table {
+  student: User!
+  unit: Unit
+  task: Task
+  createdAt: Timestamp!
+  status: String!
+  completionDate: Timestamp
+}

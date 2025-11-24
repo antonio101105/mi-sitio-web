@@ -53,6 +53,23 @@ window.submitQuiz = function () {
     });
 
     const pct = ((correct / topic.quiz.length) * 100).toFixed(1);
+
+    // --- INTEGRACIÓN CON FIREBASE ---
+    if (typeof window.guardarDatoAsignatura === 'function') {
+        // Convertimos % a nota sobre 10
+        const notaSobre10 = (parseFloat(pct) / 10).toFixed(2);
+        const estadoFinal = parseFloat(notaSobre10) >= 5 ? 'aprobado' : 'suspenso';
+
+        console.log(`📝 Guardando nota automática para ${quizState.subject}: ${notaSobre10}/10 (${pct}%)`);
+
+        // Guardamos nota y estado
+        window.guardarDatoAsignatura(quizState.subject, 'nota', notaSobre10);
+        window.guardarDatoAsignatura(quizState.subject, 'estado', estadoFinal);
+    } else {
+        console.warn('⚠️ La función guardarDatoAsignatura no está disponible');
+    }
+    // -------------------------------
+
     let grade = pct >= 90 ? 'Sobresaliente' : pct >= 70 ? 'Notable' : pct >= 50 ? 'Aprobado' : 'Suspenso';
     let icon = pct >= 90 ? 'trophy' : pct >= 70 ? 'medal' : pct >= 50 ? 'thumbs-up' : 'thumbs-down';
 

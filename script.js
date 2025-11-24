@@ -3140,6 +3140,10 @@ function guardarDatoAsignatura(idAsignatura, tipoDato, valor) {
         });
 }
 
+// Exponer la función globalmente para que quiz.js pueda usarla
+window.guardarDatoAsignatura = guardarDatoAsignatura;
+
+
 /**
  * Carga el progreso del usuario desde Firestore y rellena los inputs
  * @param {string} uid - ID del usuario
@@ -3149,6 +3153,12 @@ function cargarProgresoUsuario(uid) {
         console.error('Firestore no está inicializado.');
         return;
     }
+
+    // Primero, inicializar TODAS las notas a "0" por defecto
+    const todosLosInputsNota = document.querySelectorAll('.input-seguimiento[data-tipo="nota"]');
+    todosLosInputsNota.forEach(input => {
+        input.value = '0';
+    });
 
     db.collection('usuarios').doc(uid).get()
         .then((doc) => {
@@ -3178,7 +3188,7 @@ function cargarProgresoUsuario(uid) {
                     });
                 });
             } else {
-                console.log('No hay datos de progreso guardados para este usuario.');
+                console.log('No hay datos de progreso guardados. Mostrando valores por defecto (0).');
             }
         })
         .catch((error) => {
@@ -3200,9 +3210,13 @@ function inicializarSeguimientoAcademico() {
             const tipoDato = this.dataset.tipo;
             const valor = this.value;
 
-            if (asignatura && tipoDato) {
+            // SOLO guardar si es un cambio de ESTADO (no de nota)
+            // Las notas vienen automáticamente de los quizzes
+            if (asignatura && tipoDato === 'estado') {
                 guardarDatoAsignatura(asignatura, tipoDato, valor);
-            } else {
+            } else if (tipoDato === 'nota') {
+                console.log('ℹ️ Las notas se actualizan automáticamente al completar tests');
+            } else if (!asignatura || !tipoDato) {
                 console.warn('Input sin data-asignatura o data-tipo:', this);
             }
         });

@@ -3179,11 +3179,29 @@ function cargarProgresoUsuario(uid) {
                 Object.keys(progreso).forEach(asignatura => {
                     const datosAsignatura = progreso[asignatura];
 
-                    // Recorrer cada tipo de dato (nota, estado, etc.)
-                    Object.keys(datosAsignatura).forEach(tipoDato => {
-                        const valor = datosAsignatura[tipoDato];
+                    // 1. CALCULAR NOTA MEDIA SI HAY TEMAS
+                    if (datosAsignatura.temas) {
+                        const temas = Object.values(datosAsignatura.temas);
+                        if (temas.length > 0) {
+                            const suma = temas.reduce((acc, t) => acc + (parseFloat(t.nota) || 0), 0);
+                            const media = (suma / temas.length).toFixed(2);
+                            
+                            const inputNota = document.querySelector(
+                                `.input-seguimiento[data-asignatura="${asignatura}"][data-tipo="nota"]`
+                            );
+                            
+                            if (inputNota) {
+                                inputNota.value = media;
+                                console.log(`✓ Nota media calculada para ${asignatura}: ${media}`);
+                            }
+                        }
+                    }
 
-                        // Buscar el input correspondiente en el HTML
+                    // 2. CARGAR OTROS DATOS (Estado, etc.)
+                    Object.keys(datosAsignatura).forEach(tipoDato => {
+                        if (tipoDato === 'temas' || tipoDato === 'nota') return; // Ya procesados o ignorados
+
+                        const valor = datosAsignatura[tipoDato];
                         const input = document.querySelector(
                             `.input-seguimiento[data-asignatura="${asignatura}"][data-tipo="${tipoDato}"]`
                         );
